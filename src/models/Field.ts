@@ -1,4 +1,5 @@
 import { Cell } from "./Cell"
+import { Point } from "./Point";
 import { Seed } from "./Seed";
 
 export class Field {
@@ -8,9 +9,26 @@ export class Field {
     public get size(): number {
         return Math.sqrt(this.cells.length);
     }
-    constructor(Cells: Cell[], seed: Seed | null) {
-        this.cells = Cells.map(cell => { return { ...cell } })
+    constructor(_cells: Cell[], seed: Seed | null) {
+        this.cells = _cells.map(cell => { return { ...cell } })
         this.seed = seed;
+    }
+
+    public clone(): Field {
+        return new Field(this.cells.map(cell => { return { ...cell } }), this.seed)
+    }
+
+    public swap(index1: Point, index2: Point): Field {
+        const field = this.clone();
+        const cell1 = field.getCell(index1);
+        const cell2 = field.getCell(index2);
+        [cell1.x, cell2.x] = [cell2.x, cell1.x];
+        [cell1.y, cell2.y] = [cell2.y, cell1.y];
+        return field
+    }
+
+    public getCell(point: Point): Cell {
+        return this.cells.filter(cell => cell.x == point.x && cell.y == point.y)[0]
     }
 
     public static createField(runes: string[], words: string[]): Field {
