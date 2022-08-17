@@ -2,6 +2,7 @@ import { Field } from "../models/Field"
 import { Point } from "../models/Point"
 import CellElement from "./CellElement"
 import "./FieldElement.css"
+import ScoreElement from "./ScoreElement"
 
 type Props = {
     cellSize: number
@@ -27,6 +28,10 @@ export default function FieldElement(props: Props) {
 
 
     return (<svg width={FieldSize} height={FieldSize} onClick={mouseClick}   >
+        <ScoreElement
+            field={props.field}
+            cellSize={cellSize}
+        />
         {props.field.Cells.map((cell, index) => {
             const x = cell.x * cellSize
             const y = cell.y * cellSize

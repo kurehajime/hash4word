@@ -31,6 +31,23 @@ export class Field {
         return this.cells.filter(cell => cell.x == point.x && cell.y == point.y)[0]
     }
 
+    public calc_top() {
+        const word = this.cells.filter(cell => cell.y === 3).map(cell => cell.Rune).join('');
+        return this.calc(word)
+    }
+    public calc_right() {
+        const word = this.cells.filter(cell => cell.x === 5).map(cell => cell.Rune).join('');
+        return this.calc(word)
+    }
+    public calc_bottom() {
+        const word = this.cells.filter(cell => cell.y === 5).map(cell => cell.Rune).join('');
+        return this.calc(word)
+    }
+    public calc_left() {
+        const word = this.cells.filter(cell => cell.x === 3).map(cell => cell.Rune).join('');
+        return this.calc(word)
+    }
+
     public static createField(runes: string[], words: string[]): Field {
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
             const x = i % 9
@@ -45,13 +62,43 @@ export class Field {
         const sort = [30, 31, 32, 39, 41, 48, 49, 50, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
         const seed = Field.pick4word(runes, words, 3000)
         if (seed) {
-            const all = seed.word_top + seed.word_right + seed.word_bottom + seed.word_left
-            const runes = Field.shuffle<string>(all.split(''))
+            const all = (seed.word_top + seed.word_right + seed.word_bottom + seed.word_left).split('');
+            all.splice(all.indexOf(seed.rune_left_top, 1), 1)
+            all.splice(all.indexOf(seed.rune_right_top, 1), 1)
+            all.splice(all.indexOf(seed.rune_right_bottom, 1), 1)
+            all.splice(all.indexOf(seed.rune_right_bottom, 1), 1)
+            const runes = Field.shuffle<string>(all)
             for (let i = 0; i < runes.length; i++) {
                 cells[sort[i]].Rune = runes[i]
             }
         }
+        console.log(seed)
         return new Field(cells, seed)
+    }
+
+    private calc(word: string): number {
+        if (this.seed) {
+            const top = Field.diff(word, this.seed.word_top);
+            const right = Field.diff(word, this.seed.word_right);
+            const bottom = Field.diff(word, this.seed.word_bottom);
+            const left = Field.diff(word, this.seed.word_left);
+            return Math.max(top, right, bottom, left)
+        }
+        return 0;
+    }
+
+    private static diff(_word1: string, _word2: string): number {
+        let diff = 0;
+        const word1 = _word1.split('');
+        const word2 = _word2.split('');
+        for (let i = 0; i < word1.length; i++) {
+            if (word2.indexOf(word1[i]) !== -1) {
+                diff++
+                word2.splice(word2.indexOf(word1[i]), 1)
+            }
+
+        }
+        return diff;
     }
 
     private static shuffle<T>(arr: T[]): T[] {
@@ -78,7 +125,9 @@ export class Field {
             const results_2 = words.filter((word) => { return regs[2].test(word) })
             const results_3 = words.filter((word) => { return regs[3].test(word) })
 
-            if (results_0.length > 0 && results_1.length > 0 && results_2.length > 0 && results_3.length > 0) {
+            const uniq = [results_0, results_1, results_2, results_3].length === new Set([results_0, results_1, results_2, results_3]).size;
+
+            if (uniq && results_0.length > 0 && results_1.length > 0 && results_2.length > 0 && results_3.length > 0) {
                 const result_0 = results_0[Math.floor(Math.random() * results_0.length)];
                 const result_1 = results_1[Math.floor(Math.random() * results_1.length)];
                 const result_2 = results_2[Math.floor(Math.random() * results_2.length)];
