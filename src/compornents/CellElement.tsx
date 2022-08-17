@@ -15,6 +15,8 @@ export default function CellElement(props: Props) {
                 fill={props.selected ? 'blue' : 'whitesmoke'} className="easeIn" />
             <text x={props.x + cellSize / 2} y={props.y + cellSize / 2}
                 textAnchor="middle" dominantBaseline="central" stroke="black">{props.cell.Rune}</text>
+            {/* <text x={props.x + cellSize / 2} y={props.y + cellSize / 2}
+                textAnchor="middle" dominantBaseline="central" stroke="red">{props.cell.x + props.cell.y * 9}</text> */}
 
 
         </g > : <g></g>)

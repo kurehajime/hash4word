@@ -59,7 +59,7 @@ export class Field {
                 enabled: (x == 3 || x == 5 || y == 3 || y == 5)
             } as Cell
         });
-        const sort = [30, 31, 32, 39, 41, 48, 49, 50, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
+        const sort = [30, 50, 32, 48, 31, 39, 41, 49, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
         const seed = Field.pick4word(runes, words, 3000)
         if (seed) {
             const all = (seed.word_top + seed.word_right + seed.word_bottom + seed.word_left).split('');
