@@ -48,7 +48,7 @@ export class Field {
         return this.calc(word)
     }
 
-    public static createField(runes: string[], words: string[]): Field {
+    public static createField(runes: string[], words: string[], fixed = 0): Field {
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
             const x = i % 9
             const y = Math.floor(i / 9)
@@ -56,7 +56,8 @@ export class Field {
                 Rune: '',
                 x: x,
                 y: y,
-                enabled: (x == 3 || x == 5 || y == 3 || y == 5)
+                enabled: (x == 3 || x == 5 || y == 3 || y == 5),
+                fixed: false
             } as Cell
         });
         const sort = [30, 50, 32, 48, 31, 39, 41, 49, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
@@ -66,7 +67,18 @@ export class Field {
             all.splice(all.indexOf(seed.rune_left_top, 1), 1)
             all.splice(all.indexOf(seed.rune_right_top, 1), 1)
             all.splice(all.indexOf(seed.rune_right_bottom, 1), 1)
-            all.splice(all.indexOf(seed.rune_right_bottom, 1), 1)
+            all.splice(all.indexOf(seed.rune_left_bottom, 1), 1)
+            const crosses = [seed.rune_left_top, seed.rune_right_bottom, seed.rune_right_top, seed.rune_left_bottom];
+            for (let i = 0; i < fixed; i++) {
+                const cross = crosses[i]
+                const index = sort.shift()
+
+                all.splice(all.indexOf(cross), 1)
+                if (cross && index) {
+                    cells[index].Rune = cross
+                    cells[index].fixed = true
+                }
+            }
             const runes = Field.shuffle<string>(all)
             for (let i = 0; i < runes.length; i++) {
                 cells[sort[i]].Rune = runes[i]

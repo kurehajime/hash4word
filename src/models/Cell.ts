@@ -3,4 +3,5 @@ export type Cell = {
     x: number
     y: number
     enabled: boolean
+    fixed: boolean
 }

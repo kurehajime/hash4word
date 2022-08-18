@@ -14,12 +14,12 @@ export default function GameElement(props: Props) {
 
     useEffect(() => {
         const runes = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ'.split('')
-        setField(Field.createField(runes, ja_word))
+        setField(Field.createField(runes, ja_word, 4))
     }, [])
 
     const clicked = (point: Point) => {
         if (field) {
-            if (!field.getCell(point).enabled) {
+            if (!field.getCell(point).enabled || field.getCell(point).fixed) {
                 return
             }
             if (seleted) {
