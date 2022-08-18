@@ -17,5 +17,9 @@ export default function ScoreElement(props: Props) {
             textAnchor="middle" dominantBaseline="central" stroke="blue">{props.field.calc_top()}</text>
         <text x={(0 + 0.5) * (cellSize)} y={(5 - 0.5) * (cellSize)}
             textAnchor="middle" dominantBaseline="central" stroke="blue">{props.field.calc_bottom()}</text>
+        {
+            props.field.valid() ?
+                <text x={(0 + 0.5) * (cellSize)} y={(0 + 0.5) * (cellSize)}>CLEAR</text> : <></>
+        }
     </g>)
 }

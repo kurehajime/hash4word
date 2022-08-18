@@ -50,7 +50,7 @@ export class Field {
 
     public static createField(runes: string[], words: string[], fixed = 0): Field {
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
-            const x = i % 9
+            const x: number = i % 9
             const y = Math.floor(i / 9)
             return {
                 Rune: '',
@@ -64,10 +64,13 @@ export class Field {
         const seed = Field.pick4word(runes, words, 3000)
         if (seed) {
             const all = (seed.word_top + seed.word_right + seed.word_bottom + seed.word_left).split('');
+            // クロスするところ重複するので削除
             all.splice(all.indexOf(seed.rune_left_top, 1), 1)
             all.splice(all.indexOf(seed.rune_right_top, 1), 1)
             all.splice(all.indexOf(seed.rune_right_bottom, 1), 1)
             all.splice(all.indexOf(seed.rune_left_bottom, 1), 1)
+
+            // セルを固定
             const crosses = [seed.rune_left_top, seed.rune_right_bottom, seed.rune_right_top, seed.rune_left_bottom];
             for (let i = 0; i < fixed; i++) {
                 const cross = crosses[i]
@@ -86,6 +89,25 @@ export class Field {
         }
         console.log(seed)
         return new Field(cells, seed)
+    }
+
+    public valid(): boolean {
+        const word1 = this.cells.filter(cell => cell.y === 3).sort((a, b) => { return a.x - b.x }).map(cell => cell.Rune).join('');
+        const word2 = this.cells.filter(cell => cell.y === 5).sort((a, b) => { return a.x - b.x }).map(cell => cell.Rune).join('');
+        const word3 = this.cells.filter(cell => cell.x === 3).sort((a, b) => { return a.y - b.y }).map(cell => cell.Rune).join('');
+        const word4 = this.cells.filter(cell => cell.x === 5).sort((a, b) => { return a.y - b.y }).map(cell => cell.Rune).join('');
+        const words = [word1, word2, word3, word4]
+        if (this.seed) {
+            const results = [this.seed.word_top, this.seed.word_right, this.seed.word_bottom, this.seed.word_left]
+            for (const result of results) {
+                if (!words.includes(result)) {
+                    return false
+                }
+            }
+        } else {
+            return false
+        }
+        return true
     }
 
     private calc(word: string): number {
