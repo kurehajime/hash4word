@@ -47,7 +47,7 @@ export default function FieldElement(props: Props) {
         {props.field.Cells.map((cell, index) => {
             const selected = props.seleted !== null && props.seleted.x === cell.x && props.seleted.y === cell.y
             if (selected) {
-                return <></>
+                return;
             }
             return <CellElement
                 key={index}
@@ -64,10 +64,10 @@ export default function FieldElement(props: Props) {
         {props.field.Cells.map((cell, index) => {
             const selected = props.seleted !== null && props.seleted.x === cell.x && props.seleted.y === cell.y
             if (!selected) {
-                return <></>
+                return;
             }
             return <CellElement
-                key={index}
+                key={999 + index}
                 cell={cell}
                 x={cell.x * cellSize}
                 y={cell.y * cellSize}
