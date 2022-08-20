@@ -26,6 +26,7 @@ export default function CellElement(props: Props) {
                     textAnchor="middle" dominantBaseline="central"
                     fill={props.cell.fixed ? "#ffffff" : "#202f55"}
                     stroke={props.cell.fixed ? "#ffffff" : "#202f55"}
+                    fontSize={40}
                 >{props.cell.Rune}</text>
 
                 <line x1={x + cellSize - 0} y1={y + 0} x2={x + cellSize - 0} y2={y + cellSize} stroke="#202f55" strokeWidth="3" />

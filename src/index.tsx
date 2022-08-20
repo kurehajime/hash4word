@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
 const init_mode = (navigator.language).toLowerCase().includes("ja") ? 1 : 2
 root.render(<div className='container'>
     <GameElement
-        cellSize={50}
+        cellSize={80}
         initMode={init_mode}
     ></GameElement>
 </div>)

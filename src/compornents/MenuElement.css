@@ -1,25 +1,27 @@
 .dictionary {
     position: relative;
-    bottom: 56px;
-    left: 302px;
+    bottom: 86px;
+    left: 482px;
     z-index: 100;
     justify-content: flex-end;
+    width: 238px;
 }
 
 .mode {
-    width: 148px;
-    height: 48px;
+    width: 238px;
+    height: 78px;
     background-color: #202f55;
     border-style: solid;
     border-color: #4463b3;
     border-width: 1px;
     color: #e6edff;
+    font-size: 15px;
 }
 
 .reload {
     position: relative;
-    bottom: 155px;
-    left: 300px;
+    bottom: 245px;
+    left: 570px;
     z-index: 100;
     color: #e6edff;
     width: 150px;
@@ -28,12 +30,13 @@
 }
 
 .reload_button {
-    width: 50px;
-    height: 48px;
+    width: 80px;
+    height: 78px;
     background-color: #202f55;
     border-style: solid;
     border-color: #4463b3;
     border-width: 1px;
     color: #e6edff;
     text-align: center;
+    font-size: 20px;
 }
