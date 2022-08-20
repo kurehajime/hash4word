@@ -9,7 +9,6 @@ export default function ScoreElement(props: Props) {
     const size = props.field.size
     const FieldSize = cellSize * size
     return (<g width={FieldSize} height={FieldSize}>
-        <rect x={0} y={0} width={FieldSize} height={FieldSize} fill="#202f55"></rect>
         <text x={(3 + 1.5) * cellSize} y={(0 + 1) * (cellSize / 2)}
             textAnchor="middle" dominantBaseline="central" fill="#e6edff">{props.field.calc_left()}</text>
         <text x={(5 + 1.5) * cellSize} y={(0 + 1) * (cellSize / 2)}

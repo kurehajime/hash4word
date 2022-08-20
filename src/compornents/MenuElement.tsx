@@ -1,11 +1,11 @@
-import "./DictionaryElement.css";
+import "./MenuElement.css";
 
 type Props = {
     mode: number
     changeMode: (mode: number) => void
     reload: () => void
 }
-export default function DictionaryElement(props: Props) {
+export default function MenuElement(props: Props) {
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         props.changeMode(parseInt(e.target.value));
     }
@@ -23,6 +23,5 @@ export default function DictionaryElement(props: Props) {
             </div>
             <div className="reload"><button className="reload_button" onClick={() => { props.reload() }}>NEW<br />GAME</button></div>
         </div>
-
     )
 }

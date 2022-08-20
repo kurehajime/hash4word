@@ -7,7 +7,7 @@ import word_english2048 from '../assets/english2048.json'
 import word_pokemon_japanese from '../assets/pokemon_japanese.json'
 import word_pokemon_english from '../assets/pokemon_english.json'
 import { Point } from "../models/Point";
-import DictionaryElement from "./DictionaryElement";
+import MenuElement from "./MenuElement";
 
 type Props = {
     cellSize: number
@@ -65,7 +65,7 @@ export default function GameElement(props: Props) {
                 clicked={clicked}
                 seleted={seleted}
             /> : <></>}
-            <DictionaryElement
+            <MenuElement
                 mode={mode}
                 changeMode={(mode: number) => setMode(mode)}
                 reload={() => reload()}
