@@ -7,3 +7,7 @@
 .selected {
     cursor: grabbing;
 }
+
+.fixed {
+    cursor: default;
+}

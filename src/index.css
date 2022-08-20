@@ -7,4 +7,5 @@ body {
     justify-content: center;
     align-items: center;
     padding: 100px;
+    user-select: none;
 }

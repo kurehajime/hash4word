@@ -19,9 +19,10 @@ export default function CellElement(props: Props) {
                 fill='#131c33' className="" />
             <g>
                 <rect x={x + 1} y={y + 1} width={cellSize - 2} height={cellSize - 2}
-                    fill={props.cell.fixed ? '#4463b3' : '#e6edff'} className={props.selected && !props.cell.fixed ? "selected" : "easeIn"} />
+                    fill={props.cell.fixed ? '#4463b3' : '#e6edff'}
+                    className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")} />
                 <text x={x + cellSize / 2} y={y + cellSize / 2}
-                    className={props.selected && !props.cell.fixed ? "selected" : "easeIn"}
+                    className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")}
                     textAnchor="middle" dominantBaseline="central"
 
                     stroke={props.cell.fixed ? "#ffffff" : "#202f55"}
