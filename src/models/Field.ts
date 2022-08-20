@@ -5,17 +5,19 @@ import { Seed } from "./Seed";
 export class Field {
     private cells: Cell[]
     private seed: Seed | null = null;
+    private turn = 0;
     public get Cells(): Readonly<Cell[]> { return Object.freeze(this.cells.map(cell => Object.freeze(cell))) }
     public get size(): number {
         return Math.sqrt(this.cells.length);
     }
-    constructor(_cells: Cell[], seed: Seed | null) {
+    constructor(_cells: Cell[], seed: Seed | null, turn = 0) {
         this.cells = _cells.map(cell => { return { ...cell } })
         this.seed = seed;
+        this.turn = turn;
     }
 
     public clone(): Field {
-        return new Field(this.cells.map(cell => { return { ...cell } }), this.seed)
+        return new Field(this.cells.map(cell => { return { ...cell } }), this.seed, this.turn)
     }
 
     public swap(index1: Point, index2: Point): Field {
@@ -24,6 +26,7 @@ export class Field {
         const cell2 = field.getCell(index2);
         [cell1.x, cell2.x] = [cell2.x, cell1.x];
         [cell1.y, cell2.y] = [cell2.y, cell1.y];
+        field.turn++;
         return field
     }
 
@@ -61,7 +64,7 @@ export class Field {
             } as Cell
         });
         const sort = [30, 50, 32, 48, 31, 39, 41, 49, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
-        const seed = Field.pick4word(runes, words, 3000)
+        const seed = Field.pick4word(runes, words, 3000, 3.6)
         if (seed) {
             const all = (seed.word_top + seed.word_right + seed.word_bottom + seed.word_left).split('');
             // クロスするところ重複するので削除
@@ -145,7 +148,7 @@ export class Field {
         return arr
     }
 
-    private static pick4word(runes: string[], words: string[], tryCount: number): Seed | null {
+    private static pick4word(runes: string[], words: string[], tryCount: number, avg: number): Seed | null {
         for (let i = 0; i < tryCount; i++) {
             const rune1 = runes[Math.floor(Math.random() * runes.length)];
             const rune2 = runes[Math.floor(Math.random() * runes.length)];
@@ -162,10 +165,10 @@ export class Field {
             const uniq = [results_0, results_1, results_2, results_3].length === new Set([results_0, results_1, results_2, results_3]).size;
 
             if (uniq && results_0.length > 0 && results_1.length > 0 && results_2.length > 0 && results_3.length > 0) {
-                const result_0 = results_0.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
-                const result_1 = results_1.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
-                const result_2 = results_2.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
-                const result_3 = results_3.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
+                const result_0 = results_0.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
+                const result_1 = results_1.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
+                const result_2 = results_2.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
+                const result_3 = results_3.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
                 return {
                     word_top: result_0,
                     word_right: result_1,
