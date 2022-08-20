@@ -1,0 +1,15 @@
+.dictionary {
+    position: relative;
+    bottom: 56px;
+    left: 300px;
+    z-index: 100;
+    justify-content: flex-end;
+}
+
+.mode {
+    width: 150px;
+    height: 48px;
+    background-color: #202f55;
+    border-style: none;
+    color: #e6edff;
+}

@@ -4,6 +4,7 @@ import { Field } from "../models/Field";
 import FieldElement from "./FieldElement";
 import ja_word from '../assets/ja/words.json'
 import { Point } from "../models/Point";
+import DictionaryElement from "./DictionaryElement";
 
 type Props = {
     cellSize: number
@@ -32,10 +33,17 @@ export default function GameElement(props: Props) {
     }
 
 
-    return (field ? <FieldElement
-        cellSize={props.cellSize}
-        field={field}
-        clicked={clicked}
-        seleted={seleted}
-    /> : <></>)
+    return (
+        <div>
+            {field ? <FieldElement
+                cellSize={props.cellSize}
+                field={field}
+                clicked={clicked}
+                seleted={seleted}
+            /> : <></>}
+            <DictionaryElement
+                mode={1}
+            />
+        </div>
+    )
 }
