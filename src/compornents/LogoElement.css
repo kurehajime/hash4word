@@ -1,0 +1,15 @@
+.logo {
+    position: relative;
+    top: -555px;
+    left: 0px;
+    z-index: 100;
+    justify-content: flex-end;
+    height: 50px;
+    width: 100px;
+    background-color: transparent;
+    border-color: #e6edff;
+    color: #e6edff;
+    border-width: 2px;
+    border-style: solid;
+    font-weight: bold;
+}

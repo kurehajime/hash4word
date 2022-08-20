@@ -8,6 +8,7 @@ import word_pokemon_japanese from '../assets/pokemon_japanese.json'
 import word_pokemon_english from '../assets/pokemon_english.json'
 import { Point } from "../models/Point";
 import MenuElement from "./MenuElement";
+import LogoElement from "./LogoElement";
 
 type Props = {
     cellSize: number
@@ -70,6 +71,7 @@ export default function GameElement(props: Props) {
                 changeMode={(mode: number) => setMode(mode)}
                 reload={() => reload()}
             />
+            <LogoElement></LogoElement>
         </div>
     )
 }
