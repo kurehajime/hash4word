@@ -16,12 +16,12 @@ export default function CellElement(props: Props) {
     return (
         props.cell.enabled ? <g>
             <rect x={props.x} y={props.y} width={cellSize} height={cellSize}
-                fill='#202f55' className="" />
+                fill='#131c33' className="" />
             <g>
                 <rect x={x + 1} y={y + 1} width={cellSize - 2} height={cellSize - 2}
-                    fill={props.cell.fixed ? '#4463b3' : '#e6edff'} className={props.selected ? "" : "easeIn"} />
+                    fill={props.cell.fixed ? '#4463b3' : '#e6edff'} className={props.selected && !props.cell.fixed ? "selected" : "easeIn"} />
                 <text x={x + cellSize / 2} y={y + cellSize / 2}
-                    className={props.selected ? "" : "easeIn"}
+                    className={props.selected && !props.cell.fixed ? "selected" : "easeIn"}
                     textAnchor="middle" dominantBaseline="central"
 
                     stroke={props.cell.fixed ? "#ffffff" : "#202f55"}
