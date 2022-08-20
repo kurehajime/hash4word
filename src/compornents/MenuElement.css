@@ -9,7 +9,7 @@
 .mode {
     width: 148px;
     height: 48px;
-    background-color: transparent;
+    background-color: #202f55;
     border-style: solid;
     border-color: #4463b3;
     border-width: 1px;
@@ -30,7 +30,7 @@
 .reload_button {
     width: 50px;
     height: 48px;
-    background-color: transparent;
+    background-color: #202f55;
     border-style: solid;
     border-color: #4463b3;
     border-width: 1px;
