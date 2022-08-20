@@ -11,13 +11,18 @@ import DictionaryElement from "./DictionaryElement";
 
 type Props = {
     cellSize: number
+    initMode: number
 }
 export default function GameElement(props: Props) {
     const [field, setField] = React.useState<Field | null>(null)
     const [seleted, setSelected] = React.useState<Point | null>(null)
-    const [mode, setMode] = React.useState<number>(1)
+    const [mode, setMode] = React.useState<number>(props.initMode)
 
     useEffect(() => {
+        reload()
+    }, [mode])
+
+    const reload = () => {
         const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
         const runes_english = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
         const runes_pokemon_ja = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギクゲコザジズゼゾダヂヅデドバビブベボパピプペポッァィゥェォー'.split('')
@@ -35,7 +40,7 @@ export default function GameElement(props: Props) {
                 setField(Field.createField(runes_english, word_pokemon_english, 4))
                 break;
         }
-    }, [mode])
+    }
 
     const clicked = (point: Point) => {
         if (field) {

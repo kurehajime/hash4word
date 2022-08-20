@@ -90,6 +90,12 @@ export class Field {
                 cells[sort[i]].Rune = runes[i]
             }
         }
+        for (let i = cells.length - 1; i >= 0; i--) {
+            const r = Math.floor(Math.random() * (i + 1))
+            const tmp = cells[i]
+            cells[i] = cells[r]
+            cells[r] = tmp
+        }
         console.log(seed)
         return new Field(cells, seed)
     }
