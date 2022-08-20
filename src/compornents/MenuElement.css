@@ -1,14 +1,14 @@
 .dictionary {
     position: relative;
     bottom: 86px;
-    left: 482px;
+    left: 483px;
     z-index: 100;
     justify-content: flex-end;
     width: 238px;
 }
 
 .mode {
-    width: 238px;
+    width: 237px;
     height: 78px;
     background-color: #202f55;
     border-style: solid;

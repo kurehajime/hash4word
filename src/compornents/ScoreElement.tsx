@@ -29,7 +29,7 @@ export default function ScoreElement(props: Props) {
         {
 
             <text x={(4 + 0.5) * (cellSize)} y={(4 + 0.5) * (cellSize)}
-                textAnchor="middle" dominantBaseline="central" fontSize="35"
+                textAnchor="middle" dominantBaseline="central" fontSize="45"
                 className={props.field.valid() ? "ok" : ""}
             >{props.field.valid() ? "👍" : ""}
             </text>
