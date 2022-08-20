@@ -1,15 +1,39 @@
 .dictionary {
     position: relative;
     bottom: 56px;
-    left: 300px;
+    left: 302px;
     z-index: 100;
     justify-content: flex-end;
 }
 
 .mode {
-    width: 150px;
+    width: 148px;
     height: 48px;
     background-color: #202f55;
-    border-style: none;
+    border-style: solid;
+    border-color: #4463b3;
+    border-width: 1px;
     color: #e6edff;
+}
+
+.reload {
+    position: relative;
+    bottom: 155px;
+    left: 300px;
+    z-index: 100;
+    color: #e6edff;
+    width: 150px;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.reload_button {
+    width: 50px;
+    height: 48px;
+    background-color: #202f55;
+    border-style: solid;
+    border-color: #4463b3;
+    border-width: 1px;
+    color: #e6edff;
+    text-align: center;
 }

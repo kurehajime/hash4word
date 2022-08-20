@@ -68,6 +68,7 @@ export default function GameElement(props: Props) {
             <DictionaryElement
                 mode={mode}
                 changeMode={(mode: number) => setMode(mode)}
+                reload={() => reload()}
             />
         </div>
     )
