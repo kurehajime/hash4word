@@ -162,10 +162,10 @@ export class Field {
             const uniq = [results_0, results_1, results_2, results_3].length === new Set([results_0, results_1, results_2, results_3]).size;
 
             if (uniq && results_0.length > 0 && results_1.length > 0 && results_2.length > 0 && results_3.length > 0) {
-                const result_0 = results_0[Math.floor(Math.random() * results_0.length)];
-                const result_1 = results_1[Math.floor(Math.random() * results_1.length)];
-                const result_2 = results_2[Math.floor(Math.random() * results_2.length)];
-                const result_3 = results_3[Math.floor(Math.random() * results_3.length)];
+                const result_0 = results_0.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
+                const result_1 = results_1.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
+                const result_2 = results_2.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
+                const result_3 = results_3.sort((a, b) => { return Math.abs(4 - a.length) - Math.abs(4 - b.length) })[0]
                 return {
                     word_top: result_0,
                     word_right: result_1,
