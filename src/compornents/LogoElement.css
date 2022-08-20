@@ -13,4 +13,12 @@
     border-style: solid;
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo a {
+    color: #e6edff;
+    text-decoration: none;
 }
