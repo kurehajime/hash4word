@@ -28,10 +28,13 @@ export default function FieldElement(props: Props) {
         e.preventDefault()
     }
     const mouseMove = (e: React.PointerEvent<SVGSVGElement>) => {
+        const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
         const x = e.nativeEvent.offsetX
         const y = e.nativeEvent.offsetY
-        setMouseX(x)
-        setMouseY(y)
+        if (!isTouch) {
+            setMouseX(x)
+            setMouseY(y)
+        }
     }
     const clicked = (x: number, y: number) => {
         props.clicked({ x: Math.floor(x / cellSize), y: Math.floor(y / cellSize) })
