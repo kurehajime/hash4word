@@ -1,2 +1,2 @@
 # hashmash - Crossword Puzzle
-https://kurehajime.github.io/igeta/
+https://kurehajime.github.io/hashmash/
