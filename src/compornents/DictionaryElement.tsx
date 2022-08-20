@@ -2,10 +2,11 @@ import "./DictionaryElement.css";
 
 type Props = {
     mode: number
+    changeMode: (mode: number) => void
 }
 export default function DictionaryElement(props: Props) {
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value);
+        props.changeMode(parseInt(e.target.value));
     }
 
 

@@ -2,7 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import { Field } from "../models/Field";
 import FieldElement from "./FieldElement";
-import ja_word from '../assets/ja/words.json'
+import word_japanese2048 from '../assets/japanese2048.json'
+import word_english2048 from '../assets/english2048.json'
+import word_pokemon_japanese from '../assets/pokemon_japanese.json'
+import word_pokemon_english from '../assets/pokemon_english.json'
 import { Point } from "../models/Point";
 import DictionaryElement from "./DictionaryElement";
 
@@ -12,11 +15,27 @@ type Props = {
 export default function GameElement(props: Props) {
     const [field, setField] = React.useState<Field | null>(null)
     const [seleted, setSelected] = React.useState<Point | null>(null)
+    const [mode, setMode] = React.useState<number>(1)
 
     useEffect(() => {
-        const runes = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ'.split('')
-        setField(Field.createField(runes, ja_word, 4))
-    }, [])
+        const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
+        const runes_english = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+        const runes_pokemon_ja = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギクゲコザジズゼゾダヂヅデドバビブベボパピプペポッァィゥェォー'.split('')
+        switch (mode) {
+            case 1:
+                setField(Field.createField(runes_hiragana, word_japanese2048, 4))
+                break;
+            case 2:
+                setField(Field.createField(runes_english, word_english2048, 4))
+                break;
+            case 3:
+                setField(Field.createField(runes_pokemon_ja, word_pokemon_japanese, 4))
+                break;
+            case 4:
+                setField(Field.createField(runes_english, word_pokemon_english, 4))
+                break;
+        }
+    }, [mode])
 
     const clicked = (point: Point) => {
         if (field) {
@@ -42,7 +61,8 @@ export default function GameElement(props: Props) {
                 seleted={seleted}
             /> : <></>}
             <DictionaryElement
-                mode={1}
+                mode={mode}
+                changeMode={(mode: number) => setMode(mode)}
             />
         </div>
     )

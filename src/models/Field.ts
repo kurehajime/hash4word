@@ -106,6 +106,7 @@ export class Field {
                 if (!words.includes(result)) {
                     return false
                 }
+                words.splice(words.indexOf(result), 1)
             }
         } else {
             return false

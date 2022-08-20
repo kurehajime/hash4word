@@ -24,7 +24,7 @@ export default function CellElement(props: Props) {
                 <text x={x + cellSize / 2} y={y + cellSize / 2}
                     className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")}
                     textAnchor="middle" dominantBaseline="central"
-
+                    fill={props.cell.fixed ? "#ffffff" : "#202f55"}
                     stroke={props.cell.fixed ? "#ffffff" : "#202f55"}
                 >{props.cell.Rune}</text>
 
