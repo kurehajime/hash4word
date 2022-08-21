@@ -2,7 +2,6 @@ import { expect, it, test } from 'vitest'
 import { Field } from '../src/models/Field'
 import word_japanese2048 from '../src/assets/japanese2048.json'
 import { Random } from '../src/models/Random'
-import { describe } from 'node:test'
 test('問題を生成', () => {
     const random = new Random(64)
     const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')

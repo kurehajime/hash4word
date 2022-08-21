@@ -3,12 +3,18 @@ export class Random {
     private y: number;
     private z: number;
     private w: number;
+    private _w: number;
 
     constructor(seed: number | null = null) {
         this.x = 199011210; // Famicom Release Date
         this.y = 198904210; // GameBoy Release Date
         this.z = 199606230; // Nintendo64 Release Date
         this.w = (seed ? seed : Date.now()) % 0x100000000;
+        this._w = this.w;
+    }
+
+    seedNumber(): number {
+        return this._w;
     }
 
     next(): number {
@@ -19,5 +25,9 @@ export class Random {
 
     random(): number {
         return Math.abs(this.next() / 0x100000000);
+    }
+
+    clone(): Random {
+        return new Random(this._w);
     }
 }
