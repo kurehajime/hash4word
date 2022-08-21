@@ -106,17 +106,21 @@ export class Field {
         const word2 = this.cells.filter(cell => cell.y === 5).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');
         const word3 = this.cells.filter(cell => cell.x === 3).sort((a, b) => { return a.y - b.y }).map(cell => cell.enabled ? cell.Rune : " ").join('');
         const word4 = this.cells.filter(cell => cell.x === 5).sort((a, b) => { return a.y - b.y }).map(cell => cell.enabled ? cell.Rune : " ").join('');
-        const words = [word1, word2, word3, word4]
         if (this.seed) {
-            const results = [this.seed.word_top, this.seed.word_right, this.seed.word_bottom, this.seed.word_left]
-            for (const result of results) {
-                if (!words.includes(result)) {
-                    return false
-                }
-                words.splice(words.indexOf(result), 1)
-            }
+            return Field.validWord(this.seed, word1, word2, word3, word4)
         } else {
             return false
+        }
+    }
+
+    private static validWord(seed: Seed, word1: string, word2: string, word3: string, word4: string): boolean {
+        const words = [word1, word2, word3, word4]
+        const results = [seed.word_top, seed.word_right, seed.word_bottom, seed.word_left]
+        for (const result of results) {
+            if (!words.includes(result)) {
+                return false
+            }
+            words.splice(words.indexOf(result), 1)
         }
         return true
     }
