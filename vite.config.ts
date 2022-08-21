@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { viteSingleFile } from "vite-plugin-singlefile"
+import inject from '@rollup/plugin-inject'
+import path from 'path'
 
 export default defineConfig({
     base: "./",
@@ -8,8 +10,16 @@ export default defineConfig({
         open: true
     },
     build: {
-        outDir: './docs'
+        outDir: './docs',
+        rollupOptions: {
+            plugins: [inject({ Buffer: ['buffer', 'Buffer'] })],
+        },
     },
     assetsInclude: ['**/*.png'],
-    plugins: [react(), viteSingleFile()]
+    plugins: [react(), viteSingleFile()],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        }
+    },
 })
