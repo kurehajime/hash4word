@@ -1,5 +1,6 @@
 import { Cell } from "./Cell"
 import { Point } from "./Point";
+import { Random } from "./Random";
 import { Seed } from "./Seed";
 
 export class Field {
@@ -51,7 +52,7 @@ export class Field {
         return this.calc(word)
     }
 
-    public static createField(runes: string[], words: string[], fixed = 0): Field {
+    public static createField(runes: string[], words: string[], fixed = 0, random = new Random()): Field {
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
             const x: number = i % 9
             const y = Math.floor(i / 9)
@@ -64,7 +65,7 @@ export class Field {
             } as Cell
         });
         const sort = [30, 50, 32, 48, 31, 39, 41, 49, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
-        const seed = Field.pick4word(runes, words, 3000, 3.6)
+        const seed = Field.pick4word(runes, words, 3000, 3.6, random)
         if (seed) {
             const all = (seed.word_top + seed.word_right + seed.word_bottom + seed.word_left).split('');
             // クロスするところ重複するので削除
@@ -85,13 +86,13 @@ export class Field {
                     cells[index].fixed = true
                 }
             }
-            const runes = Field.shuffle<string>(all)
+            const runes = Field.shuffle<string>(all, random)
             for (let i = 0; i < runes.length; i++) {
                 cells[sort[i]].Rune = runes[i]
             }
         }
         for (let i = cells.length - 1; i >= 0; i--) {
-            const r = Math.floor(Math.random() * (i + 1))
+            const r = Math.floor(random.random() * (i + 1))
             const tmp = cells[i]
             cells[i] = cells[r]
             cells[r] = tmp
@@ -101,10 +102,10 @@ export class Field {
     }
 
     public valid(): boolean {
-        const word1 = this.cells.filter(cell => cell.y === 3).sort((a, b) => { return a.x - b.x }).map(cell => cell.Rune).join('');
-        const word2 = this.cells.filter(cell => cell.y === 5).sort((a, b) => { return a.x - b.x }).map(cell => cell.Rune).join('');
-        const word3 = this.cells.filter(cell => cell.x === 3).sort((a, b) => { return a.y - b.y }).map(cell => cell.Rune).join('');
-        const word4 = this.cells.filter(cell => cell.x === 5).sort((a, b) => { return a.y - b.y }).map(cell => cell.Rune).join('');
+        const word1 = this.cells.filter(cell => cell.y === 3).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+        const word2 = this.cells.filter(cell => cell.y === 5).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+        const word3 = this.cells.filter(cell => cell.x === 3).sort((a, b) => { return a.y - b.y }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+        const word4 = this.cells.filter(cell => cell.x === 5).sort((a, b) => { return a.y - b.y }).map(cell => cell.enabled ? cell.Rune : " ").join('');
         const words = [word1, word2, word3, word4]
         if (this.seed) {
             const results = [this.seed.word_top, this.seed.word_right, this.seed.word_bottom, this.seed.word_left]
@@ -145,9 +146,9 @@ export class Field {
         return diff;
     }
 
-    private static shuffle<T>(arr: T[]): T[] {
+    private static shuffle<T>(arr: T[], random: Random): T[] {
         for (let i = arr.length - 1; i >= 0; i--) {
-            const r = Math.floor(Math.random() * (i + 1))
+            const r = Math.floor(random.random() * (i + 1))
             const tmp = arr[i]
             arr[i] = arr[r]
             arr[r] = tmp
@@ -155,12 +156,12 @@ export class Field {
         return arr
     }
 
-    private static pick4word(runes: string[], words: string[], tryCount: number, avg: number): Seed | null {
+    private static pick4word(runes: string[], words: string[], tryCount: number, avg: number, random: Random): Seed | null {
         for (let i = 0; i < tryCount; i++) {
-            const rune1 = runes[Math.floor(Math.random() * runes.length)];
-            const rune2 = runes[Math.floor(Math.random() * runes.length)];
-            const rune3 = runes[Math.floor(Math.random() * runes.length)];
-            const rune4 = runes[Math.floor(Math.random() * runes.length)];
+            const rune1 = runes[Math.floor(random.random() * runes.length)];
+            const rune2 = runes[Math.floor(random.random() * runes.length)];
+            const rune3 = runes[Math.floor(random.random() * runes.length)];
+            const rune4 = runes[Math.floor(random.random() * runes.length)];
 
             const regs = Field.crossToRegex(rune1, rune2, rune3, rune4, 1, 1)
 
