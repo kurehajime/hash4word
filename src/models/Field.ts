@@ -53,6 +53,7 @@ export class Field {
     }
 
     public static createField(runes: string[], words: string[], fixed = 0, random = new Random()): Field {
+        console.log(random.seedNumber())
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
             const x: number = i % 9
             const y = Math.floor(i / 9)
