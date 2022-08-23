@@ -34,6 +34,8 @@ export default function GameElement(props: Props) {
             const seedStr = location.hash.split("#")[1]
             seed = Seed.decode(seedStr)
             setInit(true)
+        } else {
+            history.pushState("", document.title, window.location.pathname);
         }
         switch (mode) {
             case 1:
