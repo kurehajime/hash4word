@@ -27,8 +27,7 @@ export class Seed {
         try {
             const dec = decodeURIComponent(escape(window.atob(str)));
             const arg = dec.split(",")
-            if (arg.length != 8) {
-                console.log(arg)
+            if (arg.length === 8) {
                 return new Seed(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7])
             }
         } catch (error) {
