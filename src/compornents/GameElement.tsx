@@ -65,7 +65,11 @@ export default function GameElement(props: Props) {
         }
     }
 
-
+    const share = () => {
+        if (field) {
+            field.share()
+        }
+    }
     return (
         <div>
             {field ? <FieldElement
@@ -78,6 +82,7 @@ export default function GameElement(props: Props) {
                 mode={mode}
                 changeMode={(mode: number) => setMode(mode)}
                 reload={() => reload()}
+                share={() => { share() }}
             />
             <LogoElement></LogoElement>
         </div>

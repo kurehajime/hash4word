@@ -4,6 +4,7 @@ type Props = {
     mode: number
     changeMode: (mode: number) => void
     reload: () => void
+    share: () => void
 }
 export default function MenuElement(props: Props) {
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,7 +22,10 @@ export default function MenuElement(props: Props) {
                     <option value="4">Pokemon English</option>
                 </select>
             </div>
-            <div className="reload"><button className="reload_button" onClick={() => { props.reload() }}>NEW<br />GAME</button></div>
+            <div className="buttons">
+                <div className="share"><button className="share_button" onClick={() => { props.share() }}>SHARE</button></div>
+                <div className="reload"><button className="reload_button" onClick={() => { props.reload() }}>NEW<br />GAME</button></div>
+            </div>
         </div>
     )
 }

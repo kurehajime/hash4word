@@ -98,7 +98,6 @@ export class Field {
             cells[r] = tmp
         }
         console.log(seed)
-        history.pushState('', '', '#' + seed?.encode());
         return new Field(cells, seed)
     }
 
@@ -111,6 +110,19 @@ export class Field {
             return Field.validWord(this.seed, word1, word2, word3, word4)
         } else {
             return false
+        }
+    }
+
+    public share() {
+        if (this.seed) {
+            const seedStr = this.seed.encode()
+            const url = location.href.split('#')[0] + '#' + seedStr
+            const shareData = {
+                title: 'HASH4WORD',
+                text: ' #hash4word ',
+                url: url,
+            }
+            navigator.share(shareData)
         }
     }
 
