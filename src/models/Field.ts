@@ -97,7 +97,9 @@ export class Field {
             cells[i] = cells[r]
             cells[r] = tmp
         }
-        console.log(seed)
+        if (process.env.NODE_ENV === 'development') {
+            console.log(seed)
+        }
         return new Field(cells, seed)
     }
 
