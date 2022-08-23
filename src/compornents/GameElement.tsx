@@ -9,6 +9,7 @@ import word_pokemon_english from '../assets/pokemon_english.json'
 import { Point } from "../models/Point";
 import MenuElement from "./MenuElement";
 import LogoElement from "./LogoElement";
+import { Seed } from "../models/Seed";
 
 type Props = {
     cellSize: number
@@ -18,6 +19,7 @@ export default function GameElement(props: Props) {
     const [field, setField] = React.useState<Field | null>(null)
     const [seleted, setSelected] = React.useState<Point | null>(null)
     const [mode, setMode] = React.useState<number>(props.initMode)
+    const [init, setInit] = React.useState<boolean>(false)
 
     useEffect(() => {
         reload()
@@ -27,18 +29,24 @@ export default function GameElement(props: Props) {
         const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
         const runes_english = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
         const runes_pokemon_ja = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギクゲコザジズゼゾダヂヅデドバビブベボパピプペポッァィゥェォー'.split('')
+        let seed: Seed | null = null
+        if (!init && location.hash !== '') {
+            const seedStr = location.hash.split("#")[1]
+            seed = Seed.decode(seedStr)
+            setInit(true)
+        }
         switch (mode) {
             case 1:
-                setField(Field.createField(runes_hiragana, word_japanese2048, 4))
+                setField(Field.createField(runes_hiragana, word_japanese2048, 4, undefined, seed))
                 break;
             case 2:
-                setField(Field.createField(runes_english, word_english2048, 4))
+                setField(Field.createField(runes_english, word_english2048, 4, undefined, seed))
                 break;
             case 3:
-                setField(Field.createField(runes_pokemon_ja, word_pokemon_japanese, 4))
+                setField(Field.createField(runes_pokemon_ja, word_pokemon_japanese, 4, undefined, seed))
                 break;
             case 4:
-                setField(Field.createField(runes_english, word_pokemon_english, 4))
+                setField(Field.createField(runes_english, word_pokemon_english, 4, undefined, seed))
                 break;
         }
     }

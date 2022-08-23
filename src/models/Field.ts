@@ -52,8 +52,7 @@ export class Field {
         return this.calc(word)
     }
 
-    public static createField(runes: string[], words: string[], fixed = 0, random = new Random()): Field {
-        console.log(random.seedNumber())
+    public static createField(runes: string[], words: string[], fixed = 0, random = new Random(), seed: Seed | null = null): Field {
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
             const x: number = i % 9
             const y = Math.floor(i / 9)
@@ -66,7 +65,7 @@ export class Field {
             } as Cell
         });
         const sort = [30, 50, 32, 48, 31, 39, 41, 49, 21, 59, 23, 57, 33, 47, 51, 29, 12, 68, 14, 66, 34, 46, 52, 28, 3, 77, 5, 75, 35, 45, 53, 27];
-        const seed = Field.pick4word(runes, words, 3000, 3.6, random)
+        seed = seed ?? Field.pick4word(runes, words, 3000, 3.6, random)
         if (seed) {
             const all = (seed.word_top + seed.word_right + seed.word_bottom + seed.word_left).split('');
             // クロスするところ重複するので削除
@@ -99,6 +98,7 @@ export class Field {
             cells[r] = tmp
         }
         console.log(seed)
+        history.pushState('', '', '#' + seed?.encode());
         return new Field(cells, seed)
     }
 
@@ -182,16 +182,16 @@ export class Field {
                 const result_1 = results_1.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
                 const result_2 = results_2.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
                 const result_3 = results_3.sort((a, b) => { return Math.abs(avg - a.length) - Math.abs(4 - b.length) })[0]
-                return {
-                    word_top: result_0,
-                    word_right: result_1,
-                    word_bottom: result_2,
-                    word_left: result_3,
-                    rune_left_top: rune1,
-                    rune_right_top: rune2,
-                    rune_right_bottom: rune3,
-                    rune_left_bottom: rune4,
-                }
+                return new Seed(
+                    result_0,
+                    result_1,
+                    result_2,
+                    result_3,
+                    rune1,
+                    rune2,
+                    rune3,
+                    rune4
+                )
             }
         }
         return null;
