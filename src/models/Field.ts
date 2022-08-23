@@ -119,7 +119,7 @@ export class Field {
             const url = location.href.split('#')[0] + '#' + seedStr
             const shareData = {
                 title: 'HASH4WORD',
-                text: '\n #hash4word ',
+                text: '\n#hash4word ',
                 url: url,
             }
             navigator.share(shareData)
