@@ -30,9 +30,12 @@ export default function GameElement(props: Props) {
         const runes_english = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
         const runes_pokemon_ja = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギクゲコザジズゼゾダヂヅデドバビブベボパピプペポッァィゥェォー'.split('')
         let seed: Seed | null = null
-        if (!init && location.hash !== '') {
-            const seedStr = location.hash.split("#")[1]
-            seed = Seed.decode(seedStr)
+        const searchParams = new URLSearchParams(window.location.search)
+        if (!init && searchParams.has('code')) {
+            const seedStr = searchParams.get('code')
+            if (seedStr !== null) {
+                seed = Seed.decode(seedStr)
+            }
             setInit(true)
         } else {
             history.pushState("", document.title, window.location.pathname);

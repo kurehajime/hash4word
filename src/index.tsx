@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import GameElement from './compornents/GameElement'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import CreateElement from './compornents/CreateElement'
 
 const root = ReactDOM.createRoot(
@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 )
 const init_mode = (navigator.language).toLowerCase().includes("ja") ? 1 : 2
 root.render(<div className='container'>
-    <BrowserRouter>
+    <HashRouter>
         <Routes >
             <Route path="/create" element={
                 <CreateElement cellSize={80}></CreateElement>
@@ -21,7 +21,7 @@ root.render(<div className='container'>
                 ></GameElement>
             } />
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
 
 
 </div>)
