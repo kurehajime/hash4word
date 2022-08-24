@@ -32,7 +32,7 @@ export default function GameElement(props: Props) {
         let seed: Seed | null = null
         const searchParams = new URLSearchParams(window.location.search)
         if (!init && searchParams.has('code')) {
-            const seedStr = searchParams.get('code')?.replace(/\s/g, '+')
+            const seedStr = searchParams.get('code')
             if (seedStr) {
                 seed = Seed.decode(seedStr)
                 if (!seed) {
