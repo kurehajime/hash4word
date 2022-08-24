@@ -14,13 +14,13 @@ root.render(<div className='container'>
             <Route path="/create" element={
                 <CreateElement cellSize={80}></CreateElement>
             } />
+            <Route path="*" element={
+                <GameElement
+                    cellSize={80}
+                    initMode={init_mode}
+                ></GameElement>
+            } />
         </Routes>
-        <Route path="*" element={
-            <GameElement
-                cellSize={80}
-                initMode={init_mode}
-            ></GameElement>
-        } />
     </BrowserRouter>
 
 
