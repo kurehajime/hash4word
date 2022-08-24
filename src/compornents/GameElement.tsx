@@ -32,9 +32,12 @@ export default function GameElement(props: Props) {
         let seed: Seed | null = null
         const searchParams = new URLSearchParams(window.location.search)
         if (!init && searchParams.has('code')) {
-            const seedStr = searchParams.get('code')
-            if (seedStr !== null) {
+            const seedStr = searchParams.get('code')?.replace(/\s/g, '+')
+            if (seedStr) {
                 seed = Seed.decode(seedStr)
+                if (!seed) {
+                    console.log("INVALID SEED:" + seedStr)
+                }
             }
             setInit(true)
         } else {
