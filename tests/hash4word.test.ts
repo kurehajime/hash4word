@@ -22,7 +22,6 @@ test('マップを生成', () => {
     const random = new Random(64)
     const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
     const field = Field.createField(runes_hiragana, word_japanese2048, 4, random)
-    console.log(field)
     expect(field).toEqual({
         seed: {
             word_top: 'ないしょ',

@@ -3,6 +3,8 @@ type Props = {
 }
 export default function CreateElement(props: Props) {
     return (
-        <p>🍌</p>
+        <div>
+            <p>🍌</p>
+        </div>
     )
 }
