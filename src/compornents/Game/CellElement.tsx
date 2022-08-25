@@ -1,4 +1,4 @@
-import { Cell } from "../models/Cell"
+import { Cell } from "../../models/Cell"
 import "./CellElement.css"
 type Props = {
     cell: Cell

@@ -1,4 +1,4 @@
-import { Field } from "../models/Field"
+import { Field } from "../../models/Field"
 import "./ScoreElement.css"
 
 type Props = {

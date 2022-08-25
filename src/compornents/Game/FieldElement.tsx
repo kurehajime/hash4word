@@ -1,6 +1,6 @@
 import React from "react"
-import { Field } from "../models/Field"
-import { Point } from "../models/Point"
+import { Field } from "../../models/Field"
+import { Point } from "../../models/Point"
 import CellElement from "./CellElement"
 import "./FieldElement.css"
 import ScoreElement from "./ScoreElement"

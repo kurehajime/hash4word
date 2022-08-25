@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { Field } from "../models/Field";
-import FieldElement from "./FieldElement";
+import FieldElement from "./Game/FieldElement";
 import word_japanese2048 from '../assets/japanese2048.json'
 import word_english2048 from '../assets/english2048.json'
 import word_pokemon_japanese from '../assets/pokemon_japanese.json'
 import word_pokemon_english from '../assets/pokemon_english.json'
 import { Point } from "../models/Point";
-import MenuElement from "./MenuElement";
-import LogoElement from "./LogoElement";
+import MenuElement from "./Game/MenuElement";
+import LogoElement from "./Share/LogoElement";
 import { Seed } from "../models/Seed";
 
 type Props = {
