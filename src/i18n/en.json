@@ -1,12 +1,13 @@
 {
     "description1": "Let's make 4 words",
-    "description2": "Can I help you?",
+    "description2": "by swapping letters.",
     "create_description1": "Let's make a problem",
     "create_description2": "with 4 words.",
     "create1": "CREATE",
     "create2": "PROBLEM",
     "share1": "SHARE",
     "share2": "PROBLEM",
+    "newgame": "NEW GAME",
     "back_game1": "BACK",
     "back_game2": "GAME"
 }
