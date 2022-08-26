@@ -67,10 +67,22 @@ export class InputField {
         return Math.sqrt(this.cells.length);
     }
 
-    public share(): string {
+    public encode(): string {
         const seedStr = this.seed().encode()
         return location.href.split('#')[0] + '?code=' + seedStr
     }
+
+    public share() {
+        const seedStr = this.seed().encode()
+        const url = location.href.split('#')[0] + '?code=' + seedStr
+        const shareData = {
+            title: 'HASH4WORD',
+            text: '\n#hash4word ',
+            url: url,
+        }
+        navigator.share(shareData)
+    }
+
 
     private seed(): Seed {
         const top = this.cells.filter(cell => cell.y === 3).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');

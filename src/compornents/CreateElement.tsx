@@ -7,6 +7,7 @@ import InputFieldElement from "./Create/InputFieldElement"
 import ShareTextElement from "./Create/ShareTextElement"
 import LogoElement from "./Share/LogoElement"
 import GameButtonElement from "./Create/GameButtonElement"
+import ShareButtonElement from "./Create/ShareButtonElement"
 
 type Props = {
     cellSize: number
@@ -29,6 +30,7 @@ export default function CreateElement(props: Props) {
                 setInputField(InputField.createInputFieldbySeed(field.Seed))
                 break
         }
+        history.pushState("", document.title, window.location.pathname);
     }, [])
 
     return (
@@ -46,10 +48,11 @@ export default function CreateElement(props: Props) {
                         } /> : <></ >
             }
             {
-                inputField ? <ShareTextElement url={inputField.share()}></ShareTextElement> : <></>
+                inputField ? <ShareTextElement url={inputField.encode()}></ShareTextElement> : <></>
             }
             <LogoElement create={true}></LogoElement>
             <GameButtonElement></GameButtonElement>
+            <ShareButtonElement inputField={inputField}></ShareButtonElement>
         </div >
     )
 }
