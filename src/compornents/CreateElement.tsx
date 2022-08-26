@@ -5,6 +5,7 @@ import word_japanese2048 from '../assets/japanese2048.json'
 import InputFieldElement from "./Create/InputFieldElement"
 import { Point } from "../models/Point";
 import ShareTextElement from "./Create/ShareTextElement"
+import LogoElement from "./Share/LogoElement"
 
 type Props = {
     cellSize: number
@@ -35,6 +36,7 @@ export default function CreateElement(props: Props) {
             {
                 inputField ? <ShareTextElement url={inputField.share()}></ShareTextElement> : <></>
             }
+            <LogoElement></LogoElement>
         </div >
     )
 }
