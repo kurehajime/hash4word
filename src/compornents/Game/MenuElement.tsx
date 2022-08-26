@@ -18,10 +18,10 @@ export default function MenuElement(props: Props) {
         <div>
             <div className="dictionary">
                 <select name="select" onChange={onChange} className="mode">
-                    <option value="1">Japanese word 2048</option>
+                    <option value="1">日本語 2048単語</option>
                     <option value="2">Engrish word 2048</option>
-                    <option value="3">Pokemon Japanese</option>
-                    <option value="4">Pokemon English</option>
+                    <option value="3">ポケモン 全国図鑑</option>
+                    <option value="4">Pokémon Pokédex</option>
                 </select>
             </div>
             <div className="buttons">
