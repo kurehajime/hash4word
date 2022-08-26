@@ -5,11 +5,13 @@ import { Seed } from "./Seed";
 
 export class InputField {
     private cells: InputCell[]
+    public get Cells(): Readonly<InputCell[]> { return Object.freeze(this.cells.map(cell => Object.freeze(cell))) }
+
     constructor(_cells: Cell[]) {
         this.cells = _cells.map(cell => { return { ...cell } })
     }
 
-    createInputFieldbySeed(seed: Seed): InputField {
+    public static createInputFieldbySeed(seed: Seed): InputField {
         // 真ん中は固定で3分割
         const reg_top = '(.{0,3})(' + seed.rune_left_top + '.'.repeat(1) + seed.rune_right_top + ')(.{0,3})';
         const reg_right = '(.{0,3})(' + seed.rune_right_top + '.'.repeat(1) + seed.rune_right_bottom + ')(.{0,3})';
@@ -18,7 +20,7 @@ export class InputField {
         const top = seed.word_top.match(reg_top);
         const right = seed.word_right.match(reg_right);
         const bottom = seed.word_bottom.match(reg_bottom);
-        const left = seed.rune_left_bottom.match(reg_left);
+        const left = seed.word_left.match(reg_left);
         const cells = new Array(9 * 9).fill(null).map((_, i) => {
             const x: number = i % 9
             const y = Math.floor(i / 9)
@@ -30,13 +32,13 @@ export class InputField {
                 fixed: (x == 3 && y == 3) || (x == 5 && y == 3) || (x == 3 && y == 5) || (x == 5 && y == 5),
             } as InputCell
         });
+        console.log(top, right, bottom, left)
         if (top && right && bottom && left) {
             // 真ん中を動かさず9文字になるように調整
             const top_str = top[1].padStart(3, " ") + top[2] + top[3].padEnd(3, " ")
             const right_str = right[1].padStart(3, " ") + right[2] + right[3].padEnd(3, " ")
             const bottom_str = bottom[1].padStart(3, " ") + bottom[2] + bottom[3].padEnd(3, " ")
             const left_str = left[1].padStart(3, " ") + left[2] + left[3].padEnd(3, " ")
-
             for (let i = 0; i < 9; i++) {// top
                 InputField.setRune(cells, i, 3, top_str[i])
             }
@@ -52,16 +54,20 @@ export class InputField {
         }
         return new InputField(cells)
     }
+
+    public get size(): number {
+        return Math.sqrt(this.cells.length);
+    }
+
     public clone(): InputField {
         return new InputField(this.cells.map(cell => { return { ...cell } }))
     }
-    public swap(index1: Point, index2: Point): InputField {
-        const field = this.clone();
-        const cell1 = field.getCell(index1);
-        const cell2 = field.getCell(index2);
-        [cell1.x, cell2.x] = [cell2.x, cell1.x];
-        [cell1.y, cell2.y] = [cell2.y, cell1.y];
-        return field
+
+    public set(point: Point, rune: string) {
+        const cell = this.getCell(point)
+        if (cell.enabled) {
+            cell.Rune = rune
+        }
     }
 
     public getCell(point: Point): Cell {

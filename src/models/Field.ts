@@ -8,6 +8,17 @@ export class Field {
     private seed: Seed | null = null;
     private turn = 0;
     public get Cells(): Readonly<Cell[]> { return Object.freeze(this.cells.map(cell => Object.freeze(cell))) }
+    public get Seed(): Seed {
+        return new Seed(this.seed?.word_top ?? '',
+            this.seed?.word_right ?? '',
+            this.seed?.word_bottom ?? '',
+            this.seed?.word_left ?? '',
+            this.seed?.rune_left_top ?? '',
+            this.seed?.rune_right_top ?? '',
+            this.seed?.rune_right_bottom ?? '',
+            this.seed?.rune_left_bottom ?? '')
+    }
+
     public get size(): number {
         return Math.sqrt(this.cells.length);
     }
