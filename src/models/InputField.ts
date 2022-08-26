@@ -40,16 +40,24 @@ export class InputField {
             const bottom_str = bottom[1].padStart(3, " ") + bottom[2] + bottom[3].padEnd(3, " ")
             const left_str = left[1].padStart(3, " ") + left[2] + left[3].padEnd(3, " ")
             for (let i = 0; i < 9; i++) {// top
-                InputField.setRune(cells, i, 3, top_str[i])
+                if (top_str[i].trim() != "") {
+                    InputField.setRune(cells, i, 3, top_str[i])
+                }
             }
             for (let i = 0; i < 9; i++) {// right
-                InputField.setRune(cells, 5, i, right_str[i])
+                if (right_str[i].trim() != "") {
+                    InputField.setRune(cells, 5, i, right_str[i])
+                }
             }
             for (let i = 0; i < 9; i++) {// bottom
-                InputField.setRune(cells, i, 5, bottom_str[i])
+                if (bottom_str[i].trim() != "") {
+                    InputField.setRune(cells, i, 5, bottom_str[i])
+                }
             }
             for (let i = 0; i < 9; i++) {// left
-                InputField.setRune(cells, 3, i, left_str[i])
+                if (left_str[i].trim() != "") {
+                    InputField.setRune(cells, 3, i, left_str[i])
+                }
             }
         }
         return new InputField(cells)
@@ -63,11 +71,10 @@ export class InputField {
         return new InputField(this.cells.map(cell => { return { ...cell } }))
     }
 
-    public set(point: Point, rune: string) {
-        const cell = this.getCell(point)
-        if (cell.enabled) {
-            cell.Rune = rune
-        }
+    public set(point: Point, rune: string): InputField {
+        const cells = this.Cells.map(cell => { return { ...cell } })
+        InputField.setRune(cells, point.x, point.y, rune)
+        return new InputField(cells)
     }
 
     public getCell(point: Point): Cell {
