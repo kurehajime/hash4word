@@ -4,5 +4,7 @@
     "create1": "CREATE",
     "create2": "PROBLEM",
     "share1": "SHARE",
-    "share2": "PROBLEM"
+    "share2": "PROBLEM",
+    "back_game1": "BACK",
+    "back_game2": "GAME"
 }

@@ -14,7 +14,9 @@ export default function InputCellElement(props: Props) {
     return (
         props.cell.enabled ? <input type="text" className="inputCell"
             style={{
-                height: props.cellSize - 2, width: props.cellSize - 2, position: "absolute", left: props.x, top: props.y
+                height: props.cellSize - 2, width: props.cellSize - 2, position: "absolute", left: props.x, top: props.y,
+                backgroundColor: props.cell.fixed ? '#4463b3' : '#e6edff',
+                color: props.cell.fixed ? '#ffffff' : "#202f55"
             }}
             maxLength={1}
             value={props.cell.Rune}

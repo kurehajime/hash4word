@@ -6,6 +6,7 @@ import word_english2048 from '../assets/english2048.json'
 import InputFieldElement from "./Create/InputFieldElement"
 import ShareTextElement from "./Create/ShareTextElement"
 import LogoElement from "./Share/LogoElement"
+import GameButtonElement from "./Create/GameButtonElement"
 
 type Props = {
     cellSize: number
@@ -48,6 +49,7 @@ export default function CreateElement(props: Props) {
                 inputField ? <ShareTextElement url={inputField.share()}></ShareTextElement> : <></>
             }
             <LogoElement></LogoElement>
+            <GameButtonElement></GameButtonElement>
         </div >
     )
 }
