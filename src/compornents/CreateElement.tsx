@@ -30,7 +30,7 @@ export default function CreateElement(props: Props) {
                 setInputField(InputField.createInputFieldbySeed(field.Seed))
                 break
         }
-        history.pushState("", document.title, window.location.pathname);
+        history.pushState("", document.title, window.location.pathname + "#/create");
     }, [])
 
     return (
