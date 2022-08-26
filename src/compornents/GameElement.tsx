@@ -93,7 +93,7 @@ export default function GameElement(props: Props) {
                 reload={() => reload()}
                 share={() => { share() }}
             />
-            <LogoElement></LogoElement>
+            <LogoElement create={false}></LogoElement>
             <CreateButtonElement></CreateButtonElement>
         </div>
     )

@@ -1,6 +1,8 @@
 {
     "description1": "文字を入れ替えて",
     "description2": "単語を4つ作ろう",
+    "create_description1": "４つの単語で",
+    "create_description2": "問題を作ろう",
     "create1": "お題を",
     "create2": "作成する",
     "share1": "お題を",

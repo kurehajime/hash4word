@@ -48,7 +48,7 @@ export default function CreateElement(props: Props) {
             {
                 inputField ? <ShareTextElement url={inputField.share()}></ShareTextElement> : <></>
             }
-            <LogoElement></LogoElement>
+            <LogoElement create={true}></LogoElement>
             <GameButtonElement></GameButtonElement>
         </div >
     )
