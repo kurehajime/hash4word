@@ -1,3 +1,4 @@
+import toast, { Toaster } from 'react-hot-toast';
 import './ShareTextElement.css';
 type Props = {
     url: string
@@ -10,7 +11,12 @@ export default function ShareTextElement(props: Props) {
             ></input>
             <button onClick={() => {
                 navigator.clipboard.writeText(props.url);
+                toast('Copied to clipboard!', {
+                    duration: 2000,
+                    position: 'bottom-center',
+                });
             }}>📋</button>
+            <Toaster />
         </div>
 
     )
