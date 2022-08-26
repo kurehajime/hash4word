@@ -79,7 +79,7 @@ export default function GameElement(props: Props) {
         }
     }
     return (
-        <div>
+        <div style={{ position: "relative" }}>
             {field ? <FieldElement
                 cellSize={props.cellSize}
                 field={field}

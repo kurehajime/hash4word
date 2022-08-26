@@ -12,7 +12,7 @@ export default function InputFieldElement(props: Props) {
     const size = props.inputField.size
     const FieldSize = cellSize * size
 
-    return (<div style={{ width: FieldSize, height: FieldSize, position: "relative" }} >
+    return (<div style={{ width: FieldSize, height: FieldSize }} >
         {props.inputField.Cells.map((cell, index) => {
             return <InputCellElement
                 key={index}

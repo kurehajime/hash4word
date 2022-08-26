@@ -18,16 +18,19 @@ export default function CreateElement(props: Props) {
     }, [])
 
     return (
-        <div>
+        <div style={{
+            position: "relative"
+        }}>
             {
                 inputField ?
-                    <InputFieldElement inputField={inputField} cellSize={props.cellSize}
+                    <InputFieldElement inputField={inputField} cellSize={props.cellSize
+                    }
                         edit={
                             (x, y, rune) => {
                                 setInputField(inputField.set({ x, y }, rune))
                             }
-                        } /> : <></>
+                        } /> : <></ >
             }
-        </div>
+        </div >
     )
 }

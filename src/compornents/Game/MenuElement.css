@@ -1,6 +1,6 @@
 .dictionary {
-    position: relative;
-    bottom: 86px;
+    position: absolute;
+    top: 640px;
     left: 483px;
     z-index: 100;
     justify-content: flex-end;
@@ -19,8 +19,8 @@
 }
 
 .buttons {
-    position: relative;
-    bottom: 245px;
+    position: absolute;
+    top: 558px;
     left: 565px;
     z-index: 100;
     color: #e6edff;

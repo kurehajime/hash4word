@@ -1,6 +1,6 @@
 .logo {
-    position: relative;
-    top: -882px;
+    position: absolute;
+    top: 0px;
     left: 0px;
     z-index: 100;
     justify-content: flex-end;
@@ -14,11 +14,13 @@
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    display: table-cell;
+    display: table;
     vertical-align: middle;
 }
 
 .logo a {
     color: #e6edff;
     text-decoration: none;
+    display: table-cell;
+    vertical-align: middle;
 }
