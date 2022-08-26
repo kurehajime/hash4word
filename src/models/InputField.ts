@@ -67,6 +67,25 @@ export class InputField {
         return Math.sqrt(this.cells.length);
     }
 
+    public share(): string {
+        const seedStr = this.seed().encode()
+        return location.href.split('#')[0] + '?code=' + seedStr
+    }
+
+    private seed(): Seed {
+        const top = this.cells.filter(cell => cell.y === 3).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+        const right = this.cells.filter(cell => cell.y === 5).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+        const bottom = this.cells.filter(cell => cell.x === 3).sort((a, b) => { return a.y - b.y }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+        const left = this.cells.filter(cell => cell.x === 5).sort((a, b) => { return a.y - b.y }).map(cell => cell.enabled ? cell.Rune : " ").join('');
+
+        const rune_left_top = this.cells.filter(cell => cell.x === 3 && cell.y === 3)[0].Rune
+        const rune_right_top = this.cells.filter(cell => cell.x === 5 && cell.y === 3)[0].Rune
+        const rune_right_bottom = this.cells.filter(cell => cell.x === 5 && cell.y === 5)[0].Rune
+        const rune_left_bottom = this.cells.filter(cell => cell.x === 3 && cell.y === 5)[0].Rune
+
+        return new Seed(top, right, bottom, left, rune_left_top, rune_right_top, rune_right_bottom, rune_left_bottom)
+    }
+
     public clone(): InputField {
         return new InputField(this.cells.map(cell => { return { ...cell } }))
     }
