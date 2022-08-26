@@ -1,40 +1,37 @@
 .dictionary {
     position: absolute;
     top: 640px;
-    left: 483px;
+    left: 560px;
     z-index: 100;
     justify-content: flex-end;
-    width: 238px;
 }
 
 .mode {
-    width: 237px;
+    width: 160px;
     height: 78px;
     background-color: #202f55;
     border-style: solid;
     border-color: #4463b3;
     border-width: 1px;
     color: #e6edff;
-    font-size: 15px;
+    font-size: 14px;
 }
 
-.buttons {
+
+.reload_button {
     position: absolute;
     top: 558px;
-    left: 565px;
+    left: 560px;
     z-index: 100;
     color: #e6edff;
-    width: 150px;
+    width: 160px;
     justify-content: flex-end;
     display: flex;
     text-align: right;
     justify-content: center;
     align-items: center;
     padding: 0px;
-}
 
-.reload_button {
-    width: 78px;
     height: 78px;
     background-color: #202f55;
     border-style: solid;
@@ -47,7 +44,19 @@
 }
 
 .share_button {
-    width: 78px;
+    position: absolute;
+    top: 558px;
+    left: 0px;
+    z-index: 100;
+    color: #e6edff;
+    width: 160px;
+    justify-content: flex-end;
+    display: flex;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
     height: 78px;
     background-color: #202f55;
     border-style: solid;

@@ -10,6 +10,7 @@ import { Point } from "../models/Point";
 import MenuElement from "./Game/MenuElement";
 import LogoElement from "./Share/LogoElement";
 import { Seed } from "../models/Seed";
+import CreateButtonElement from "./Game/CreateButtonElement";
 
 type Props = {
     cellSize: number
@@ -93,6 +94,7 @@ export default function GameElement(props: Props) {
                 share={() => { share() }}
             />
             <LogoElement></LogoElement>
+            <CreateButtonElement></CreateButtonElement>
         </div>
     )
 }

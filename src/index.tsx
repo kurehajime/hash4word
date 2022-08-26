@@ -4,6 +4,7 @@ import GameElement from './compornents/GameElement'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import CreateElement from './compornents/CreateElement'
 
+import './i18n/configs'
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 )
@@ -12,7 +13,10 @@ root.render(<div className='container'>
     <HashRouter>
         <Routes >
             <Route path="/create" element={
-                <CreateElement cellSize={80}></CreateElement>
+                <CreateElement
+                    cellSize={80}
+                    init_mode={init_mode}
+                ></CreateElement>
             } />
             <Route path="*" element={
                 <GameElement
