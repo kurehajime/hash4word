@@ -1,21 +1,30 @@
-.logo {
+.logoBox {
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 100;
-    justify-content: flex-end;
-    height: 80px;
-    width: 160px;
     background-color: transparent;
-    border-color: #e6edff;
     color: #e6edff;
+}
+
+.logoBox p {
+    font-size: 18px;
+    margin: 5px;
+}
+
+
+.logo {
+    border-color: #e6edff;
     border-width: 2px;
     border-style: solid;
-    font-weight: bold;
-    font-size: 20px;
+    height: 80px;
+    width: 160px;
     text-align: center;
     display: table;
     vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: flex-end;
 }
 
 .logo a {
