@@ -26,13 +26,5 @@ export default function ScoreElement(props: Props) {
             textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>{props.field.calc_bottom() + ' hit'}</text>
         <text x={(0 + 0.9) * (cellSize)} y={(5 - 0.2) * (cellSize)}
             textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>▶</text>
-        {
-
-            <text x={(4 + 0.5) * (cellSize)} y={(4 + 0.5) * (cellSize)}
-                textAnchor="middle" dominantBaseline="central" fontSize="45"
-                className={props.field.valid() ? "ok" : ""}
-            >{props.field.valid() ? "👍" : ""}
-            </text>
-        }
     </g>)
 }

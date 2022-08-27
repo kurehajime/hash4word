@@ -11,6 +11,7 @@ import MenuElement from "./Game/MenuElement";
 import LogoElement from "./Share/LogoElement";
 import { Seed } from "../models/Seed";
 import CreateButtonElement from "./Game/CreateButtonElement";
+import OkElement from "./Game/OkElement";
 
 type Props = {
     cellSize: number
@@ -95,6 +96,9 @@ export default function GameElement(props: Props) {
             />
             <LogoElement create={false}></LogoElement>
             <CreateButtonElement></CreateButtonElement>
+            {field?.valid() ? <OkElement
+                field={field}
+            ></OkElement> : <></>}
         </div>
     )
 }
