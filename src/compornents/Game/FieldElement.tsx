@@ -2,6 +2,7 @@ import React from "react"
 import { Field } from "../../models/Field"
 import { Point } from "../../models/Point"
 import CellElement from "./CellElement"
+import CellShadowElement from "./CellShadowElement"
 import "./FieldElement.css"
 import ScoreElement from "./ScoreElement"
 
@@ -47,6 +48,21 @@ export default function FieldElement(props: Props) {
             field={props.field}
             cellSize={cellSize}
         />
+        {props.field.Cells.map((cell, index) => {
+            const selected = props.seleted !== null && props.seleted.x === cell.x && props.seleted.y === cell.y
+            if (selected) {
+                return;
+            }
+            return <CellShadowElement
+                key={index}
+                cell={cell}
+                x={cell.x * cellSize}
+                y={cell.y * cellSize}
+                mouseX={0}
+                mouseY={0}
+                cellSize={cellSize} selected={false} />
+        })
+        }
         {props.field.Cells.map((cell, index) => {
             const selected = props.seleted !== null && props.seleted.x === cell.x && props.seleted.y === cell.y
             if (selected) {

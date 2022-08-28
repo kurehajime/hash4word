@@ -6,6 +6,7 @@
 
 .selected {
     cursor: grabbing;
+    filter: drop-shadow(20px 20px 20px #000);
 }
 
 .fixed {
