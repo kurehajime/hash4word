@@ -21,10 +21,10 @@ export default function ScoreElement(props: Props) {
         <text x={(0 + 0.5) * (cellSize)} y={(3 - 0.2) * (cellSize)}
             textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>{props.field.calc_top() + ' hit'}</text>
         <text x={(0 + 0.9) * (cellSize)} y={(3 - 0.2) * (cellSize)}
-            textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>▶</text>
+            textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>▶︎</text>
         <text x={(0 + 0.5) * (cellSize)} y={(5 - 0.2) * (cellSize)}
             textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>{props.field.calc_bottom() + ' hit'}</text>
         <text x={(0 + 0.9) * (cellSize)} y={(5 - 0.2) * (cellSize)}
-            textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>▶</text>
+            textAnchor="middle" dominantBaseline="central" fill="#e6edff" fontSize={15}>▶︎</text>
     </g>)
 }
