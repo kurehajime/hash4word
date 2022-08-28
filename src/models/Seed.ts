@@ -22,11 +22,11 @@ export class Seed {
 
     public encode() {
         const arg = [this.word_top, this.word_right, this.word_bottom, this.word_left, this.rune_left_top, this.rune_right_top, this.rune_right_bottom, this.rune_left_bottom]
-        return encode(unescape(encodeURIComponent(arg.join(","))));
+        return encode(encodeURIComponent(arg.join(",")));
     }
     static decode(str: string): Seed | null {
         try {
-            const dec = decodeURIComponent(escape(decode(str)));
+            const dec = decodeURIComponent(decode(str));
             const arg = dec.split(",")
             if (arg.length === 8) {
                 return new Seed(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7])
