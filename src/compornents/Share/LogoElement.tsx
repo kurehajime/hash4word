@@ -10,7 +10,7 @@ export default function LogoElement(props: Props) {
     return (
         <div className="logoBox">
             <div className="logo">
-                <a href="https://github.com/kurehajime/hash4word">HASH4WORD</a>
+                <a href="https://github.com/kurehajime">HASH4WORD</a>
             </div>
             <p>{props.create ? t('create_description1') : t('description1')}<br />
                 {props.create ? t('create_description2') : t('description2')}</p>
