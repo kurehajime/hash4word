@@ -90,8 +90,8 @@ export default function FieldElement(props: Props) {
                 cell={cell}
                 x={cell.x * cellSize}
                 y={cell.y * cellSize}
-                mouseX={mouseX - cellSize / 2}
-                mouseY={mouseY - cellSize / 2}
+                mouseX={mouseX - (cellSize * 1.05) / 2}
+                mouseY={mouseY - (cellSize * 1.05) / 2}
                 cellSize={cellSize}
                 selected={selected}
             />
