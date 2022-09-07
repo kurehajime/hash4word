@@ -42,7 +42,7 @@ export default function CellElement(props: Props) {
                         textAnchor="middle" dominantBaseline="central"
                         fill={"#f0f8ff"}
                         stroke={"#00294d"}
-                        fontSize={"60px"}
+                        fontSize={"100px"}
                         fontFamily="Helvetica Neue, Arial"
                         fontWeight="bold"
                         opacity={0.5}
