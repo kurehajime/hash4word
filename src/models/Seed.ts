@@ -27,6 +27,7 @@ export class Seed {
     static decode(str: string): Seed | null {
         try {
             const dec = decode(str);
+            console.log(dec)
             const arg = dec.split(",")
             if (arg.length === 8) {
                 return new Seed(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7])
