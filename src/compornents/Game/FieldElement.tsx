@@ -9,8 +9,9 @@ import ScoreElement from "./ScoreElement"
 type Props = {
     cellSize: number
     field: Field
-    clicked: (point: Point) => void
+    clicked: (point: Point, touched: boolean) => void
     seleted: Point | null
+    touched: boolean
 }
 export default function FieldElement(props: Props) {
     const ref = useRef<SVGSVGElement>(null);
@@ -40,7 +41,7 @@ export default function FieldElement(props: Props) {
             const y = (e.touches[0].clientY - window.pageYOffset - rect.top)
             setMouseX(x)
             setMouseY(y)
-            clicked(x, y)
+            clicked(x, y, true)
         }
         e.preventDefault()
     }
@@ -51,7 +52,7 @@ export default function FieldElement(props: Props) {
             const y = mouseY
             setMouseX(x)
             setMouseY(y)
-            clicked(x, y)
+            clicked(x, y, true)
         }
         e.preventDefault()
     }
@@ -74,8 +75,8 @@ export default function FieldElement(props: Props) {
         }
     }
 
-    const clicked = (x: number, y: number) => {
-        props.clicked({ x: Math.floor(x / cellSize), y: Math.floor(y / cellSize) })
+    const clicked = (x: number, y: number, touched = false) => {
+        props.clicked({ x: Math.floor(x / cellSize), y: Math.floor(y / cellSize) }, touched)
     }
 
     useEffect(() => {
@@ -128,6 +129,7 @@ export default function FieldElement(props: Props) {
                 mouseY={0}
                 cellSize={cellSize}
                 selected={selected}
+                touched={props.touched}
             />
         })
         }
@@ -145,6 +147,7 @@ export default function FieldElement(props: Props) {
                 mouseY={mouseY - (cellSize * 1.05) / 2}
                 cellSize={cellSize}
                 selected={selected}
+                touched={props.touched}
             />
         })
         }

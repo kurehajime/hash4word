@@ -22,6 +22,7 @@ export default function GameElement(props: Props) {
     const [seleted, setSelected] = React.useState<Point | null>(null)
     const [mode, setMode] = React.useState<number>(props.initMode)
     const [init, setInit] = React.useState<boolean>(false)
+    const [touched, setTouched] = React.useState<boolean>(false)
 
     useEffect(() => {
         reload()
@@ -61,7 +62,7 @@ export default function GameElement(props: Props) {
         }
     }
 
-    const clicked = (point: Point) => {
+    const clicked = (point: Point, touched = false) => {
         if (field) {
             if (!field.getCell(point).enabled || field.getCell(point).fixed) {
                 return
@@ -69,8 +70,10 @@ export default function GameElement(props: Props) {
             if (seleted) {
                 setField(field.swap(seleted, point))
                 setSelected(null)
+                setTouched(false)
             } else {
                 setSelected({ ...point })
+                setTouched(touched)
             }
         }
     }
@@ -87,6 +90,7 @@ export default function GameElement(props: Props) {
                 field={field}
                 clicked={clicked}
                 seleted={seleted}
+                touched={touched}
             /> : <></>}
             <MenuElement
                 mode={mode}
