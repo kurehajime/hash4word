@@ -24,28 +24,18 @@ export default function FieldElement(props: Props) {
     const [mouseStartY, setMouseStartY] = React.useState<number>(0)
 
 
-
-
-    const mouseClick = (e: React.PointerEvent<SVGSVGElement>) => {
-        const x = e.nativeEvent.offsetX
-        const y = e.nativeEvent.offsetY
-        setMouseX(x)
-        setMouseY(y)
-        clicked(x, y)
-        e.preventDefault()
-    }
-
     const touchStart = (event: Event) => {
-        const e = event as TouchEvent
+        const e = event as PointerEvent
         const rect = (e.target as SVGSVGElement).getBoundingClientRect()
-        const x = (e.touches[0].clientX - window.pageXOffset - rect.left)
-        const y = (e.touches[0].clientY - window.pageYOffset - rect.top)
+        const x = (e.clientX - window.pageXOffset - rect.left)
+        const y = (e.clientY - window.pageYOffset - rect.top)
+        const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
         if (!props.seleted) {
             setMouseX(x)
             setMouseY(y)
             setMouseStartX(x)
             setMouseStartY(y)
-            clicked(x, y, true)
+            clicked(x, y, isTouch)
         } else {
             setMouseX(x)
             setMouseY(y)
@@ -54,7 +44,7 @@ export default function FieldElement(props: Props) {
         e.preventDefault()
     }
     const touchEnd = (event: Event) => {
-        const e = event as TouchEvent
+        const e = event as PointerEvent
         if (props.seleted) {
             const x = mouseX
             const y = mouseY
@@ -69,21 +59,12 @@ export default function FieldElement(props: Props) {
     }
 
     const touchMove = (event: Event) => {
-        const e = event as TouchEvent
+        const e = event as PointerEvent
         const rect = (e.target as SVGSVGElement).getBoundingClientRect()
-        const x = (e.touches[0].clientX - window.pageXOffset - rect.left)
-        const y = (e.touches[0].clientY - window.pageYOffset - rect.top)
+        const x = (e.clientX - window.pageXOffset - rect.left)
+        const y = (e.clientY - window.pageYOffset - rect.top)
         setMouseX(x)
         setMouseY(y)
-    }
-    const mouseMove = (e: React.PointerEvent<SVGSVGElement>) => {
-        const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
-        const x = e.nativeEvent.offsetX
-        const y = e.nativeEvent.offsetY
-        if (!isTouch) {
-            setMouseX(x)
-            setMouseY(y)
-        }
     }
 
     const clicked = (x: number, y: number, touched = false) => {
@@ -91,21 +72,20 @@ export default function FieldElement(props: Props) {
     }
 
     useEffect(() => {
-        ref.current?.addEventListener("touchstart", touchStart)
-        ref.current?.addEventListener("touchend", touchEnd)
-        ref.current?.addEventListener("touchmove", touchMove)
+        ref.current?.addEventListener("pointerdown", touchStart)
+        ref.current?.addEventListener("pointerup", touchEnd)
+        ref.current?.addEventListener("pointermove", touchMove)
         return () => {
-            ref.current?.removeEventListener("touchstart", touchStart)
-            ref.current?.removeEventListener("touchend", touchEnd)
-            ref.current?.removeEventListener("touchmove", touchMove)
+            ref.current?.removeEventListener("pointerdown", touchStart)
+            ref.current?.removeEventListener("pointerup", touchEnd)
+            ref.current?.removeEventListener("pointermove", touchMove)
         }
     },)
 
 
     return (<svg
         ref={ref}
-        width={FieldSize} height={FieldSize} onClick={mouseClick}
-        onPointerMove={mouseMove}
+        width={FieldSize} height={FieldSize}
         className="field" >
         <ScoreElement
             field={props.field}
