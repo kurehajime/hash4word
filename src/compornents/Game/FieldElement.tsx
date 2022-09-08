@@ -20,6 +20,8 @@ export default function FieldElement(props: Props) {
     const FieldSize = cellSize * size
     const [mouseX, setMouseX] = React.useState<number>(0)
     const [mouseY, setMouseY] = React.useState<number>(0)
+    const [mouseStartX, setMouseStartX] = React.useState<number>(0)
+    const [mouseStartY, setMouseStartY] = React.useState<number>(0)
 
 
 
@@ -35,13 +37,19 @@ export default function FieldElement(props: Props) {
 
     const touchStart = (event: Event) => {
         const e = event as TouchEvent
+        const rect = (e.target as SVGSVGElement).getBoundingClientRect()
+        const x = (e.touches[0].clientX - window.pageXOffset - rect.left)
+        const y = (e.touches[0].clientY - window.pageYOffset - rect.top)
         if (!props.seleted) {
-            const rect = (e.target as SVGSVGElement).getBoundingClientRect()
-            const x = (e.touches[0].clientX - window.pageXOffset - rect.left)
-            const y = (e.touches[0].clientY - window.pageYOffset - rect.top)
             setMouseX(x)
             setMouseY(y)
+            setMouseStartX(x)
+            setMouseStartY(y)
             clicked(x, y, true)
+        } else {
+            setMouseX(x)
+            setMouseY(y)
+            clicked(x, y)
         }
         e.preventDefault()
     }
@@ -50,6 +58,9 @@ export default function FieldElement(props: Props) {
         if (props.seleted) {
             const x = mouseX
             const y = mouseY
+            if (Math.sqrt((x - mouseStartX) ^ 2 + (y - mouseStartY) ^ 2) < 8) {
+                return;
+            }
             setMouseX(x)
             setMouseY(y)
             clicked(x, y, true)
