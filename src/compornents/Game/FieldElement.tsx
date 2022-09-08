@@ -58,7 +58,7 @@ export default function FieldElement(props: Props) {
         if (props.seleted) {
             const x = mouseX
             const y = mouseY
-            if (Math.sqrt((x - mouseStartX) ^ 2 + (y - mouseStartY) ^ 2) < 8) {
+            if (Math.sqrt((x - mouseStartX) ** 2 + (y - mouseStartY) ** 2) < 20) {
                 return;
             }
             setMouseX(x)
