@@ -23,8 +23,13 @@ export class Random {
         return this.w = (this.w ^ (this.w >>> 19)) ^ (t ^ (t >>> 8));
     }
 
+    nextInt(min: number, max: number) {
+        const r = Math.abs(this.next());
+        return min + (r % (max + 1 - min));
+    }
+
     random(): number {
-        return Math.abs(this.next() / 0x100000000);
+        return this.nextInt(0, 2147483647 - 1) / 2147483647;
     }
 
     clone(): Random {
