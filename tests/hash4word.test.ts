@@ -1,4 +1,4 @@
-import { expect, it, test } from 'vitest'
+import { expect, test } from 'vitest'
 import { Field } from '../src/models/Field'
 import word_japanese2048 from '../src/assets/japanese2048.json'
 import { Random } from '../src/models/Random'
@@ -123,20 +123,19 @@ test('マップを生成', () => {
     })
 })
 
-test('答え合わせ', () => {
-    it('正解', () => {
-        const random = new Random(64)
-        const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
-        const seed = Field["pick4word"](runes_hiragana, word_japanese2048, 3000, 3.6, random)
-        const result = seed ? Field["validWord"](seed, "かいてん", "ていけい", "うけつけ", "かんけい") : false
-        expect(result).toEqual(true)
-    })
+test('答え合わせ(正解)', () => {
+    const random = new Random(64)
+    const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
+    const seed = Field["pick4word"](runes_hiragana, word_japanese2048, 3000, 3.6, random)
+    const result = seed ? Field["validWord"](seed, seed.word_top, seed.word_right, seed.word_bottom, seed.word_left) : false
+    expect(result).toEqual(true)
+})
 
-    it('不正解', () => {
-        const random = new Random(64)
-        const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
-        const seed = Field["pick4word"](runes_hiragana, word_japanese2048, 3000, 3.6, random)
-        const result = seed ? Field["validWord"](seed, "かいてん", "ていけい", "うけつけ", "かいけん") : true
-        expect(result).toEqual(false)
-    })
+test('答え合わせ(不正解)', () => {
+    const random = new Random(64)
+    const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
+    const seed = Field["pick4word"](runes_hiragana, word_japanese2048, 3000, 3.6, random)
+    const invalidTop = seed ? `${seed.word_top}ん` : ''
+    const result = seed ? Field["validWord"](seed, invalidTop, seed.word_right, seed.word_bottom, seed.word_left) : true
+    expect(result).toEqual(false)
 })
