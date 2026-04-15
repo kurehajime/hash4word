@@ -6,7 +6,7 @@
         "@types/node": "^25.6.0",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
-        "i18next": "^26.0.4",
+        "i18next": "^26.0.5",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "react-hot-toast": "^2.6.0",
