@@ -31,7 +31,7 @@ export default function CellElement(props: Props) {
                     textAnchor="middle" dominantBaseline="central"
                     fill={foregroundColor}
                     stroke={foregroundColor}
-                    fontSize={props.selected ? "42px" : "40px"}
+                    fontSize={`${cellSize * (props.selected ? 0.85 : 0.8)}px`}
                     fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
                     fontWeight={900}
                 >{props.cell.Rune}</text>
