@@ -18,6 +18,7 @@ export default function FieldElement(props: Props) {
     const cellSize = props.cellSize
     const size = props.field.size
     const FieldSize = cellSize * size
+    const shadowPadding = 10
     const [mouseX, setMouseX] = React.useState<number>(0)
     const [mouseY, setMouseY] = React.useState<number>(0)
     const [mouseStartX, setMouseStartX] = React.useState<number>(0)
@@ -85,7 +86,7 @@ export default function FieldElement(props: Props) {
 
     return (<svg
         ref={ref}
-        width={FieldSize} height={FieldSize}
+        width={FieldSize + shadowPadding} height={FieldSize + shadowPadding}
         className="field" >
         <ScoreElement
             field={props.field}
