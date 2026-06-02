@@ -1,4 +1,5 @@
 import { Field } from "../../models/Field"
+import goodIcon from "../../assets/good.svg"
 import "./OkElement.css"
 
 type Props = {
@@ -7,6 +8,6 @@ type Props = {
 export default function OkElement(props: Props) {
     return (<div
         className="ok"
-    >{props.field.valid() ? "👍" : ""}
+    >{props.field.valid() ? <img className="okIcon" src={goodIcon} alt="clear" /> : ""}
     </div>)
 }
