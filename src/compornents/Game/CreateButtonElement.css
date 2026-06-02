@@ -3,7 +3,7 @@
     top: 640px;
     left: 0px;
     z-index: 100;
-    color: #000000;
+    color: #ffffff;
     justify-content: flex-end;
     display: flex;
     text-align: right;
@@ -15,11 +15,11 @@
 .createButton {
     width: 160px;
     height: 78px;
-    background-color: #ffffff;
+    background-color: #000000;
     border-style: solid;
     border-color: #000000;
     border-width: 1px;
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     font-size: 20px;
     padding: 0px;
