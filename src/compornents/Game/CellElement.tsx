@@ -1,4 +1,5 @@
 import { Cell } from "../../models/Cell"
+import { runeRotation } from "../../utils/runeRotation"
 import "./CellElement.css"
 type Props = {
     cell: Cell
@@ -18,6 +19,9 @@ export default function CellElement(props: Props) {
     const isCross = (props.cell.x === 3 || props.cell.x === 5) && (props.cell.y === 3 || props.cell.y === 5)
     const foregroundColor = isCross ? "#ffffff" : "#000000"
     const backgroundColor = isCross ? "#000000" : "#ffffff"
+    const textX = x + cellSize / 2
+    const textY = y + cellSize / 2
+    const rotation = runeRotation(props.cell.Rune)
     return (
         props.cell.enabled ? <g>
             <rect x={props.x} y={props.y} width={cellSize} height={cellSize}
@@ -26,9 +30,10 @@ export default function CellElement(props: Props) {
                 <rect x={x + 1} y={y + 1} width={(cellSize2) - 2} height={(cellSize2) - 2}
                     fill={backgroundColor}
                     className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")} />
-                <text x={x + cellSize / 2} y={y + cellSize / 2}
+                <text x={textX} y={textY}
                     className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")}
                     textAnchor="middle" dominantBaseline="central"
+                    transform={`rotate(${rotation} ${textX} ${textY})`}
                     fill={foregroundColor}
                     stroke={foregroundColor}
                     fontSize={`${cellSize * (props.selected ? 0.85 : 0.8)}px`}
@@ -44,6 +49,7 @@ export default function CellElement(props: Props) {
                     <text x={x + cellSize / 2 - cellSize} y={y + cellSize / 2 - cellSize}
                         className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")}
                         textAnchor="middle" dominantBaseline="central"
+                        transform={`rotate(${rotation} ${x + cellSize / 2 - cellSize} ${y + cellSize / 2 - cellSize})`}
                         fill={"#000000"}
                         stroke={"#000000"}
                         fontSize={"100px"}
