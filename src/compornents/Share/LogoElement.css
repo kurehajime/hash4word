@@ -4,7 +4,7 @@
     left: 0px;
     z-index: 100;
     background-color: transparent;
-    color: #e6edff;
+    color: #000000;
 }
 
 .logoBox p {
@@ -14,7 +14,7 @@
 
 
 .logo {
-    border-color: #e6edff;
+    border-color: #000000;
     border-width: 2px;
     border-style: solid;
     height: 80px;
@@ -28,7 +28,7 @@
 }
 
 .logo a {
-    color: #e6edff;
+    color: #000000;
     text-decoration: none;
     display: table-cell;
     vertical-align: middle;
