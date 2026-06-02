@@ -32,7 +32,8 @@ export default function CellElement(props: Props) {
                     fill={foregroundColor}
                     stroke={foregroundColor}
                     fontSize={props.selected ? "42px" : "40px"}
-                    fontFamily="Helvetica Neue, Arial"
+                    fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
+                    fontWeight={900}
                 >{props.cell.Rune}</text>
 
                 <line x1={x + (cellSize2) - 0} y1={y + 0} x2={x + (cellSize2) - 0} y2={y + (cellSize2)} stroke="#000000" strokeWidth="3" />
@@ -46,8 +47,8 @@ export default function CellElement(props: Props) {
                         fill={"#000000"}
                         stroke={"#000000"}
                         fontSize={"100px"}
-                        fontFamily="Helvetica Neue, Arial"
-                        fontWeight="bold"
+                        fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
+                        fontWeight={900}
                         opacity={0.5}
                     >{props.cell.Rune}</text>
                 </g> : <></>
