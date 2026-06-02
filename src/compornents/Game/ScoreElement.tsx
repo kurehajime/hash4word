@@ -10,13 +10,13 @@ export default function ScoreElement(props: Props) {
     const size = props.field.size
     const FieldSize = cellSize * size
     return (<g width={FieldSize} height={FieldSize}>
-        <text x={(3 + 1.3) * cellSize} y={(0 + 1) * (cellSize / 2)}
+        <text x={(3 + 1.4) * cellSize} y={(0 + 1) * (cellSize / 2)}
             textAnchor="middle" dominantBaseline="central" fill="#000000" fontSize={15}>{props.field.calc_left() + ' hit'}</text>
-        <text x={(3 + 1.3) * cellSize} y={(0 + 1.5) * (cellSize / 2)}
+        <text x={(3 + 1.4) * cellSize} y={(0 + 1.5) * (cellSize / 2)}
             textAnchor="middle" dominantBaseline="central" fill="#000000" fontSize={15}>▼</text>
-        <text x={(5 + 1.3) * cellSize} y={(0 + 1) * (cellSize / 2)}
+        <text x={(5 + 1.4) * cellSize} y={(0 + 1) * (cellSize / 2)}
             textAnchor="middle" dominantBaseline="central" fill="#000000" fontSize={15}>{props.field.calc_right() + ' hit'}</text>
-        <text x={(5 + 1.3) * cellSize} y={(0 + 1.5) * (cellSize / 2)}
+        <text x={(5 + 1.4) * cellSize} y={(0 + 1.5) * (cellSize / 2)}
             textAnchor="middle" dominantBaseline="central" fill="#000000" fontSize={15}>▼</text>
         <text x={(0 + 0.5) * (cellSize)} y={(3 - 0.2) * (cellSize)}
             textAnchor="middle" dominantBaseline="central" fill="#000000" fontSize={15}>{props.field.calc_top() + ' hit'}</text>

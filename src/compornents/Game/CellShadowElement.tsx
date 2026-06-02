@@ -13,9 +13,10 @@ export default function CellShadowElement(props: Props) {
     const cellSize = props.cellSize
     const x = props.selected ? props.mouseX : props.x
     const y = props.selected ? props.mouseY : props.y
+    const shadowOffset = 10
     return (
         props.cell.enabled ? <g>
-            <rect x={x + 1} y={y + 1} width={cellSize - 2} height={cellSize - 2}
+            <rect x={x + shadowOffset} y={y + shadowOffset} width={cellSize} height={cellSize}
                 className="shadow" />
         </g > : <g></g>)
 }
