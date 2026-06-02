@@ -11,7 +11,9 @@ export default function LogoElement(props: Props) {
     return (
         <div className="logoBox">
             <div className="logo">
-                <a href="https://github.com/kurehajime">HASH4WORD</a>
+                <a href="https://github.com/kurehajime">
+                    <RotatedButtonText lines={["HASH4WORD"]} />
+                </a>
             </div>
             <p>
                 <RotatedButtonText lines={[

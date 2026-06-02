@@ -6,6 +6,12 @@
     justify-content: flex-end;
 }
 
+.modeBox {
+    position: relative;
+    width: 160px;
+    height: 78px;
+}
+
 .mode {
     width: 160px;
     height: 78px;
@@ -13,11 +19,29 @@
     border-style: solid;
     border-color: #000000;
     border-width: 1px;
-    color: #ffffff;
+    color: transparent;
     font-size: 14px;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
     font-weight: 900;
     cursor: pointer;
+}
+
+.mode option {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.modeOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    pointer-events: none;
 }
 
 
