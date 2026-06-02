@@ -27,7 +27,10 @@ export default function FieldElement(props: Props) {
 
     const touchStart = (event: Event) => {
         const e = event as PointerEvent
-        const rect = (e.target as SVGSVGElement).getBoundingClientRect()
+        const rect = ref.current?.getBoundingClientRect()
+        if (!rect) {
+            return
+        }
         const x = (e.clientX - window.pageXOffset - rect.left)
         const y = (e.clientY - window.pageYOffset - rect.top)
         const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
@@ -61,7 +64,10 @@ export default function FieldElement(props: Props) {
 
     const touchMove = (event: Event) => {
         const e = event as PointerEvent
-        const rect = (e.target as SVGSVGElement).getBoundingClientRect()
+        const rect = ref.current?.getBoundingClientRect()
+        if (!rect) {
+            return
+        }
         const x = (e.clientX - window.pageXOffset - rect.left)
         const y = (e.clientY - window.pageYOffset - rect.top)
         setMouseX(x)
@@ -143,6 +149,6 @@ export default function FieldElement(props: Props) {
             />
         })
         }
-        <rect x={0} y={0} width={FieldSize} height={FieldSize} opacity={0} ></rect>
+        <rect x={0} y={0} width={FieldSize} height={FieldSize} opacity={0} pointerEvents="none" ></rect>
     </svg >)
 }
