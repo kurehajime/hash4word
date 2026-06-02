@@ -1,0 +1,5 @@
+.rotatedButtonChar {
+    display: inline-block;
+    transform-origin: center;
+    white-space: pre;
+}

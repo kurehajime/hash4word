@@ -1,5 +1,6 @@
 import "./MenuElement.css";
 import { useTranslation } from 'react-i18next'
+import RotatedButtonText from "../Share/RotatedButtonText";
 
 type Props = {
     mode: number
@@ -25,8 +26,8 @@ export default function MenuElement(props: Props) {
                 </select>
             </div>
             <div className="buttons">
-                <div className="share"><button className="share_button" onClick={() => { props.share() }}>{t('share1')}<br />{t('share2')}</button></div>
-                <div className="reload"><button className="reload_button" onClick={() => { props.reload() }}>{t('newgame')}</button></div>
+                <div className="share"><button className="share_button" onClick={() => { props.share() }}><RotatedButtonText lines={[t('share1'), t('share2')]} /></button></div>
+                <div className="reload"><button className="reload_button" onClick={() => { props.reload() }}><RotatedButtonText lines={[t('newgame')]} /></button></div>
             </div>
         </div>
     )
