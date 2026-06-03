@@ -1,0 +1,25 @@
+.backgroundMarquee {
+    position: fixed;
+    inset: -110px -220px;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transform: rotate(-20deg);
+    transform-origin: center;
+}
+
+.backgroundMarqueeRow {
+    margin: 280px 0;
+}
+
+.backgroundMarqueeText {
+    display: inline-block;
+    padding: 0 28px;
+    background-color: #000000;
+    color: #ff006a;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
+}

@@ -12,6 +12,7 @@ import LogoElement from "./Share/LogoElement";
 import { Seed } from "../models/Seed";
 import CreateButtonElement from "./Game/CreateButtonElement";
 import OkElement from "./Game/OkElement";
+import BackgroundMarquee from "./Share/BackgroundMarquee";
 
 type Props = {
     cellSize: number
@@ -85,24 +86,27 @@ export default function GameElement(props: Props) {
     }
     return (
         <div style={{ position: "relative" }}>
-            {field ? <FieldElement
-                cellSize={props.cellSize}
-                field={field}
-                clicked={clicked}
-                seleted={seleted}
-                touched={touched}
-            /> : <></>}
-            <MenuElement
-                mode={mode}
-                changeMode={(mode: number) => setMode(mode)}
-                reload={() => reload()}
-                share={() => { share() }}
-            />
-            <LogoElement create={false}></LogoElement>
-            <CreateButtonElement></CreateButtonElement>
-            {field?.valid() ? <OkElement
-                field={field}
-            ></OkElement> : <></>}
+            {field?.valid() ? <BackgroundMarquee /> : <></>}
+            <div style={{ position: "relative", zIndex: 1 }}>
+                {field ? <FieldElement
+                    cellSize={props.cellSize}
+                    field={field}
+                    clicked={clicked}
+                    seleted={seleted}
+                    touched={touched}
+                /> : <></>}
+                <MenuElement
+                    mode={mode}
+                    changeMode={(mode: number) => setMode(mode)}
+                    reload={() => reload()}
+                    share={() => { share() }}
+                />
+                <LogoElement create={false}></LogoElement>
+                <CreateButtonElement></CreateButtonElement>
+                {field?.valid() ? <OkElement
+                    field={field}
+                ></OkElement> : <></>}
+            </div>
         </div>
     )
 }
