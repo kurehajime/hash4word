@@ -25,7 +25,7 @@ export default function CellElement(props: Props) {
     return (
         props.cell.enabled ? <g>
             <rect x={props.x} y={props.y} width={cellSize} height={cellSize}
-                fill="#000000" className="" />
+                fill={props.selected ? "url(#panel-back-screentone)" : "#000000"} className="" />
             <g>
                 <rect x={x + 1} y={y + 1} width={(cellSize2) - 2} height={(cellSize2) - 2}
                     fill={backgroundColor}
