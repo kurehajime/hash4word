@@ -1,6 +1,7 @@
 import './LogoElement.css';
 import { useTranslation } from 'react-i18next'
 import RotatedButtonText from './RotatedButtonText';
+import titleImage from '../../assets/title.png';
 type Props = {
     create: boolean
 }
@@ -12,7 +13,7 @@ export default function LogoElement(props: Props) {
         <div className="logoBox">
             <div className="logo">
                 <a href="https://github.com/kurehajime">
-                    <RotatedButtonText lines={["HASH4WORD"]} />
+                    <img className="titleImage" src={titleImage} alt="HASH4WORD" />
                 </a>
             </div>
             <p>
