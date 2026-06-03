@@ -51,7 +51,8 @@ export default function CellElement(props: Props) {
                         textAnchor="middle" dominantBaseline="central"
                         transform={`rotate(${rotation} ${x + cellSize / 2 - cellSize} ${y + cellSize / 2 - cellSize})`}
                         fill={"#000000"}
-                        stroke={"#000000"}
+                        stroke={"#ffffff"}
+                        strokeWidth={3}
                         fontSize={"100px"}
                         fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
                         fontWeight={900}
