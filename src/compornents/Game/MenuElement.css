@@ -6,15 +6,42 @@
     justify-content: flex-end;
 }
 
+.modeBox {
+    position: relative;
+    width: 160px;
+    height: 78px;
+}
+
 .mode {
     width: 160px;
     height: 78px;
-    background-color: #202f55;
+    background-color: #000000;
     border-style: solid;
-    border-color: #4463b3;
+    border-color: #000000;
     border-width: 1px;
-    color: #e6edff;
+    color: transparent;
     font-size: 14px;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.mode option {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.modeOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    pointer-events: none;
 }
 
 
@@ -23,7 +50,7 @@
     top: 558px;
     left: 560px;
     z-index: 100;
-    color: #e6edff;
+    color: #ffffff;
     width: 160px;
     justify-content: flex-end;
     display: flex;
@@ -33,14 +60,17 @@
     padding: 0px;
 
     height: 78px;
-    background-color: #202f55;
+    background-color: #000000;
     border-style: solid;
-    border-color: #4463b3;
+    border-color: #000000;
     border-width: 1px;
-    color: #e6edff;
+    color: #ffffff;
     text-align: center;
     font-size: 20px;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
     padding: 0px;
+    cursor: pointer;
 }
 
 .share_button {
@@ -48,7 +78,7 @@
     top: 558px;
     left: 0px;
     z-index: 100;
-    color: #e6edff;
+    color: #ffffff;
     width: 160px;
     justify-content: flex-end;
     display: flex;
@@ -58,13 +88,16 @@
     padding: 0px;
 
     height: 78px;
-    background-color: #202f55;
+    background-color: #000000;
     border-style: solid;
-    border-color: #4463b3;
+    border-color: #000000;
     border-width: 1px;
-    color: #e6edff;
+    color: #ffffff;
     text-align: center;
     font-size: 20px;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
     margin-right: 3px;
     padding: 0px;
+    cursor: pointer;
 }

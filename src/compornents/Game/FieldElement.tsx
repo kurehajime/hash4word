@@ -18,6 +18,7 @@ export default function FieldElement(props: Props) {
     const cellSize = props.cellSize
     const size = props.field.size
     const FieldSize = cellSize * size
+    const shadowPadding = 10
     const [mouseX, setMouseX] = React.useState<number>(0)
     const [mouseY, setMouseY] = React.useState<number>(0)
     const [mouseStartX, setMouseStartX] = React.useState<number>(0)
@@ -26,7 +27,10 @@ export default function FieldElement(props: Props) {
 
     const touchStart = (event: Event) => {
         const e = event as PointerEvent
-        const rect = (e.target as SVGSVGElement).getBoundingClientRect()
+        const rect = ref.current?.getBoundingClientRect()
+        if (!rect) {
+            return
+        }
         const x = (e.clientX - window.pageXOffset - rect.left)
         const y = (e.clientY - window.pageYOffset - rect.top)
         const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
@@ -60,7 +64,10 @@ export default function FieldElement(props: Props) {
 
     const touchMove = (event: Event) => {
         const e = event as PointerEvent
-        const rect = (e.target as SVGSVGElement).getBoundingClientRect()
+        const rect = ref.current?.getBoundingClientRect()
+        if (!rect) {
+            return
+        }
         const x = (e.clientX - window.pageXOffset - rect.left)
         const y = (e.clientY - window.pageYOffset - rect.top)
         setMouseX(x)
@@ -85,8 +92,14 @@ export default function FieldElement(props: Props) {
 
     return (<svg
         ref={ref}
-        width={FieldSize} height={FieldSize}
+        width={FieldSize + shadowPadding} height={FieldSize + shadowPadding}
         className="field" >
+        <defs>
+            <pattern id="panel-back-screentone" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="4" height="4" fill="#000000" />
+                <line x1="0" y1="0" x2="0" y2="4" stroke="#ff006a" strokeWidth="0.75" />
+            </pattern>
+        </defs>
         <ScoreElement
             field={props.field}
             cellSize={cellSize}
@@ -142,6 +155,6 @@ export default function FieldElement(props: Props) {
             />
         })
         }
-        <rect x={0} y={0} width={FieldSize} height={FieldSize} opacity={0} ></rect>
+        <rect x={0} y={0} width={FieldSize} height={FieldSize} opacity={0} pointerEvents="none" ></rect>
     </svg >)
 }

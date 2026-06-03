@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import RotatedButtonText from '../Share/RotatedButtonText'
 import './GameButtonElement.css'
 export default function GameButtonElement() {
     const { t } = useTranslation()
@@ -7,7 +8,7 @@ export default function GameButtonElement() {
     return (
         <div className="gameButtonElementBox">
             <Link to="/">
-                <button className="gameButtonElement">{t('back_game1')}<br />{t('back_game2')}</button>
+                <button className="gameButtonElement"><RotatedButtonText lines={[t('back_game1'), t('back_game2')]} /></button>
             </Link>
         </div>
     )

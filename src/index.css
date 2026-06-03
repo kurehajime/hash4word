@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=block');
+
 body {
-    background-color: #202f55;
+    background-color: #ff006a;
     font-family: "Helvetica Neue", "Arial";
 }
 
 .container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     user-select: none;
+}
+
+.appContent {
+    position: relative;
+    z-index: 1;
 }

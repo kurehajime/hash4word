@@ -10,22 +10,24 @@ const root = ReactDOM.createRoot(
 )
 const init_mode = (navigator.language).toLowerCase().includes("ja") ? 1 : 2
 root.render(<div className='container'>
-    <HashRouter>
-        <Routes >
-            <Route path="/create" element={
-                <CreateElement
-                    cellSize={80}
-                    init_mode={init_mode}
-                ></CreateElement>
-            } />
-            <Route path="*" element={
-                <GameElement
-                    cellSize={80}
-                    initMode={init_mode}
-                ></GameElement>
-            } />
-        </Routes>
-    </HashRouter>
+    <div className="appContent">
+        <HashRouter>
+            <Routes >
+                <Route path="/create" element={
+                    <CreateElement
+                        cellSize={80}
+                        init_mode={init_mode}
+                    ></CreateElement>
+                } />
+                <Route path="*" element={
+                    <GameElement
+                        cellSize={80}
+                        initMode={init_mode}
+                    ></GameElement>
+                } />
+            </Routes>
+        </HashRouter>
+    </div>
 
 
 </div>)

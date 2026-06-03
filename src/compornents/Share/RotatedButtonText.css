@@ -1,0 +1,29 @@
+.rotatedButtonChar {
+    display: inline-block;
+    transform-origin: center;
+    white-space: pre;
+}
+
+.rotatedButtonCharInner {
+    display: inline-block;
+    transform-origin: center;
+}
+
+.rotatedButtonCharInner.animated {
+    animation: pop-char 320ms ease-out;
+    animation-fill-mode: both;
+}
+
+@keyframes pop-char {
+    0% {
+        transform: scale(0.9) rotate(-15deg);
+    }
+
+    45% {
+        transform: scale(1.15) rotate(10deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}

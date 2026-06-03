@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import RotatedButtonText from '../Share/RotatedButtonText'
 import './CreateButtonElement.css'
 export default function CellElement() {
     const { t } = useTranslation()
@@ -7,7 +8,7 @@ export default function CellElement() {
     return (
         <div className="createButtonBox">
             <Link to="/create">
-                <button className="createButton">{t('create1')}<br />{t('create2')}</button>
+                <button className="createButton"><RotatedButtonText lines={[t('create1'), t('create2')]} /></button>
             </Link>
         </div>
     )

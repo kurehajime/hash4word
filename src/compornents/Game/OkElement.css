@@ -8,8 +8,12 @@
     animation: buru .1s infinite;
     text-align: center;
     vertical-align: middle;
-    font-size: 45px;
-    padding-top: 5px;
+}
+
+.okIcon {
+    width: 80px;
+    height: 80px;
+    display: block;
 }
 
 @keyframes buru {

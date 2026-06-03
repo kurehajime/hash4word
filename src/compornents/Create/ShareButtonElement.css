@@ -3,7 +3,7 @@
     top: 558px;
     left: 0px;
     z-index: 100;
-    color: #e6edff;
+    color: #ffffff;
     justify-content: flex-end;
     display: flex;
     text-align: right;
@@ -15,12 +15,15 @@
 .shareButtonElement {
     width: 160px;
     height: 78px;
-    background-color: #202f55;
+    background-color: #000000;
     border-style: solid;
-    border-color: #4463b3;
+    border-color: #000000;
     border-width: 1px;
-    color: #e6edff;
+    color: #ffffff;
     text-align: center;
     font-size: 20px;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
     padding: 0px;
+    cursor: pointer;
 }
