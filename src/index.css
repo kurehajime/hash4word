@@ -3,6 +3,9 @@
 body {
     background-color: #ff006a;
     font-family: "Helvetica Neue", "Arial";
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .container {
@@ -16,4 +19,11 @@ body {
 .appContent {
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 760px) {
+    .container {
+        justify-content: flex-start;
+        min-width: max-content;
+    }
 }
