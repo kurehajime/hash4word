@@ -24,10 +24,9 @@
     text-align: center;
     display: table;
     vertical-align: middle;
-    font-size: 20px;
+    font-size: 24px;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
     font-weight: 900;
-    font-weight: bold;
     justify-content: flex-end;
 }
 
