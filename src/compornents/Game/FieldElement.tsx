@@ -97,7 +97,7 @@ export default function FieldElement(props: Props) {
         <defs>
             <pattern id="panel-back-screentone" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                 <rect width="4" height="4" fill="#000000" />
-                <line x1="0" y1="0" x2="0" y2="4" stroke="#ffffff" strokeWidth="0.75" />
+                <line x1="0" y1="0" x2="0" y2="4" stroke="#ff006a" strokeWidth="0.75" />
             </pattern>
         </defs>
         <ScoreElement
