@@ -1,15 +1,18 @@
 .backgroundMarquee {
     position: fixed;
-    inset: -110px -420px;
+    inset: 0;
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    transform: rotate(-20deg);
-    transform-origin: center;
 }
 
 .backgroundMarqueeRow {
-    margin: 280px 0;
+    position: absolute;
+    top: 280px;
+    left: 50%;
+    width: 1400px;
+    transform: translateX(-50%) rotate(-20deg);
+    transform-origin: center;
 }
 
 .backgroundMarqueeText {

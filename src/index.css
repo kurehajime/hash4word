@@ -1,29 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=block');
 
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 body {
     background-color: #ff006a;
     font-family: "Helvetica Neue", "Arial";
     margin: 0;
     padding: 10px;
-    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .container {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     user-select: none;
+}
+
+.appViewport {
+    position: relative;
+    z-index: 1;
+    width: calc(730px * var(--app-scale, 1));
+    height: calc(740px * var(--app-scale, 1));
 }
 
 .appContent {
     position: relative;
+    width: 730px;
+    height: 740px;
+    transform: scale(var(--app-scale, 1));
+    transform-origin: top left;
     z-index: 1;
 }
 
 @media (max-width: 760px) {
     .container {
         justify-content: flex-start;
-        min-width: max-content;
     }
 }
