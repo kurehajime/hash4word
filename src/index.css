@@ -48,3 +48,9 @@ body {
         justify-content: flex-start;
     }
 }
+
+@media (orientation: portrait) {
+    body {
+        padding-top: 28px;
+    }
+}
