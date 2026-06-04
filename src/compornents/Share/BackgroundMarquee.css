@@ -8,20 +8,18 @@
 
 .backgroundMarqueeRow {
     position: absolute;
-    top: 280px;
     left: 50%;
     width: 1400px;
-    transform: translateX(-50%) rotate(-20deg);
     transform-origin: center;
 }
 
 .backgroundMarqueeText {
     display: inline-block;
-    padding: 0 28px;
-    background-color: #000000;
+    padding: 2px 18px;
+    background-color: #ffffff;
     color: #ff006a;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-    font-size: 100px;
+    font-size: 48px;
     font-weight: 900;
     line-height: 1;
     white-space: nowrap;
