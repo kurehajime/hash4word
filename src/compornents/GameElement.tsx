@@ -11,7 +11,6 @@ import MenuElement from "./Game/MenuElement";
 import LogoElement from "./Share/LogoElement";
 import { Seed } from "../models/Seed";
 import CreateButtonElement from "./Game/CreateButtonElement";
-import OkElement from "./Game/OkElement";
 import BackgroundMarquee from "./Share/BackgroundMarquee";
 
 type Props = {
@@ -103,9 +102,6 @@ export default function GameElement(props: Props) {
                 />
                 <LogoElement create={false}></LogoElement>
                 <CreateButtonElement></CreateButtonElement>
-                {field?.valid() ? <OkElement
-                    field={field}
-                ></OkElement> : <></>}
             </div>
         </div>
     )
