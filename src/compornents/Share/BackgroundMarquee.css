@@ -9,7 +9,7 @@
 .backgroundMarqueeRow {
     position: absolute;
     left: 50%;
-    width: 1400px;
+    width: max(2400px, 260vw);
     transform-origin: center;
 }
 

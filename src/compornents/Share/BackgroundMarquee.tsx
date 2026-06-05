@@ -1,4 +1,5 @@
 import Marquee from "react-fast-marquee"
+import { createPortal } from "react-dom"
 import "./BackgroundMarquee.css"
 
 export default function BackgroundMarquee() {
@@ -9,7 +10,7 @@ export default function BackgroundMarquee() {
         { top: 560, angle: 17, speed: 92, direction: "right" as const },
     ]
 
-    return <div className="backgroundMarquee">
+    return createPortal(<div className="backgroundMarquee">
         {rows.map((row, index) => (
             <div
                 className="backgroundMarqueeRow"
@@ -29,5 +30,5 @@ export default function BackgroundMarquee() {
                 </Marquee>
             </div>
         ))}
-    </div>
+    </div>, document.body)
 }
