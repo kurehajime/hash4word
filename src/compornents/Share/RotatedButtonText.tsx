@@ -4,6 +4,7 @@ import "./RotatedButtonText.css"
 type Props = {
     lines: string[]
     animate?: boolean
+    highlightText?: string
 }
 
 export default function RotatedButtonText(props: Props) {
@@ -13,6 +14,10 @@ export default function RotatedButtonText(props: Props) {
             <span key={lineIndex}>
                 {Array.from(line).map((char, charIndex) => {
                     const animationIndex = charCount++
+                    const highlightStart = props.highlightText ? line.indexOf(props.highlightText) : -1
+                    const highlighted = highlightStart !== -1 &&
+                        charIndex >= highlightStart &&
+                        charIndex < highlightStart + Array.from(props.highlightText ?? "").length
                     return <span
                             key={`${lineIndex}-${charIndex}`}
                             className="rotatedButtonChar"
@@ -21,7 +26,11 @@ export default function RotatedButtonText(props: Props) {
                             }}
                         >
                             <span
-                                className={props.animate ? "rotatedButtonCharInner animated" : "rotatedButtonCharInner"}
+                                className={[
+                                    "rotatedButtonCharInner",
+                                    props.animate ? "animated" : "",
+                                    highlighted ? "highlighted" : "",
+                                ].filter(className => className !== "").join(" ")}
                                 style={{
                                     animationDelay: `${animationIndex * 35}ms`,
                                 }}

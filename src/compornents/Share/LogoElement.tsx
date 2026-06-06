@@ -20,7 +20,7 @@ export default function LogoElement(props: Props) {
                 <RotatedButtonText lines={[
                     props.create ? t('create_description1') : t('description1'),
                     props.create ? t('create_description2') : t('description2'),
-                ]} animate />
+                ]} animate highlightText={props.create ? t('create_description_highlight') : undefined} />
             </p>
         </div>
     )

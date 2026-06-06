@@ -9,6 +9,10 @@
     transform-origin: center;
 }
 
+.rotatedButtonCharInner.highlighted {
+    color: #ffffff;
+}
+
 .rotatedButtonCharInner.animated {
     animation: pop-char 320ms ease-out;
     animation-fill-mode: both;
