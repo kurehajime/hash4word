@@ -15,6 +15,7 @@ type Props = {
 }
 export default function CreateElement(props: Props) {
     const [inputField, setInputField] = useState<InputField | null>(null)
+    const [message, setMessage] = useState<string>("")
 
     useEffect(() => {
         const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
@@ -48,11 +49,15 @@ export default function CreateElement(props: Props) {
                         } /> : <></ >
             }
             {
-                inputField ? <ShareTextElement url={inputField.encode()}></ShareTextElement> : <></>
+                inputField ? <ShareTextElement
+                    url={inputField.encode(message)}
+                    message={message}
+                    changeMessage={(message) => setMessage(message)}
+                ></ShareTextElement> : <></>
             }
             <LogoElement create={true}></LogoElement>
             <GameButtonElement></GameButtonElement>
-            <ShareButtonElement inputField={inputField}></ShareButtonElement>
+            <ShareButtonElement inputField={inputField} message={message}></ShareButtonElement>
         </div >
     )
 }

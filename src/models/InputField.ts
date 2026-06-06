@@ -1,5 +1,6 @@
 import { Cell } from "./Cell";
 import { InputCell } from "./InputCell";
+import { Message } from "./Message";
 import { Point } from "./Point";
 import { Seed } from "./Seed";
 
@@ -67,14 +68,18 @@ export class InputField {
         return Math.sqrt(this.cells.length);
     }
 
-    public encode(): string {
+    public encode(message = ""): string {
         const seedStr = this.seed().encode()
-        return location.href.split('#')[0] + '?code=' + seedStr
+        const url = new URL(location.href.split('#')[0])
+        url.searchParams.set('code', seedStr)
+        if (message.trim() !== "") {
+            url.searchParams.set('message', Message.encode(message))
+        }
+        return url.toString()
     }
 
-    public share() {
-        const seedStr = this.seed().encode()
-        const url = location.href.split('#')[0] + '?code=' + seedStr
+    public share(message = "") {
+        const url = this.encode(message)
         const shareData = {
             title: 'HASH4WORD',
             text: '\n#hash4word ',

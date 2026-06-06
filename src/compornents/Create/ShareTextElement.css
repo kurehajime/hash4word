@@ -1,3 +1,30 @@
+.clearMessageLabel {
+    position: absolute;
+    border-style: none;
+    padding: 0px;
+    font-size: 20px;
+    width: 240px;
+    top: 585px;
+    left: 480px;
+    display: flex;
+    color: #000000;
+}
+
+.clearMessage {
+    position: absolute;
+    border-style: none;
+    padding: 0px;
+    font-size: 20px;
+    width: 240px;
+    top: 615px;
+    left: 480px;
+    display: flex;
+}
+
+.clearMessage input {
+    width: 100%;
+}
+
 .shareTextLabel {
     position: absolute;
     border-style: none;

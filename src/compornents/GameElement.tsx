@@ -10,6 +10,7 @@ import { Point } from "../models/Point";
 import MenuElement from "./Game/MenuElement";
 import LogoElement from "./Share/LogoElement";
 import { Seed } from "../models/Seed";
+import { Message } from "../models/Message";
 import CreateButtonElement from "./Game/CreateButtonElement";
 import BackgroundMarquee from "./Share/BackgroundMarquee";
 
@@ -41,6 +42,10 @@ export default function GameElement(props: Props) {
                 if (!seed) {
                     console.log("INVALID SEED:" + seedStr)
                 }
+            }
+            if (import.meta.env.DEV && searchParams.has('message')) {
+                const messageStr = searchParams.get('message')
+                console.log("MESSAGE:" + (messageStr ? Message.decode(messageStr) : ""))
             }
             setInit(true)
         } else {
