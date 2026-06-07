@@ -141,6 +141,11 @@
 }
 
 @media (max-width: 760px) {
+    .createCompleteDialog {
+        align-items: flex-start;
+        padding-top: 96px;
+    }
+
     .createCompleteMessageLabel,
     .createCompleteUrlLabel {
         font-size: 20px;
