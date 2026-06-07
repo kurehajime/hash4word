@@ -1,0 +1,115 @@
+.createCompleteDialog {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background-color: #ff006a;
+}
+
+.createCompleteDialogClose {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #000000;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.createCompleteDialogContent {
+    display: flex;
+    width: min(520px, 100%);
+    flex-direction: column;
+    gap: 18px;
+}
+
+.createCompleteMessageLabel,
+.createCompleteUrlLabel {
+    color: #000000;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.createCompleteUrlLabel {
+    margin-top: 8px;
+}
+
+.createCompleteMessageInput {
+    width: 100%;
+    min-height: 58px;
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    padding: 8px 12px;
+}
+
+.createCompleteUrlBox {
+    display: flex;
+    width: 100%;
+}
+
+.createCompleteUrlInput {
+    flex: 1;
+    min-width: 0;
+    min-height: 58px;
+    border: 3px solid #000000;
+    border-right: 0px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 8px 12px;
+}
+
+.createCompleteCopyButton {
+    width: 58px;
+    min-height: 58px;
+    border: 3px solid #000000;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.createCompleteShareButton {
+    width: 100%;
+    min-height: 96px;
+    border: 3px solid #000000;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    padding: 0px;
+    cursor: pointer;
+}
+
+@media (max-width: 760px) {
+    .createCompleteMessageLabel,
+    .createCompleteUrlLabel {
+        font-size: 26px;
+    }
+
+    .createCompleteShareButton {
+        min-height: 88px;
+        font-size: 26px;
+    }
+}

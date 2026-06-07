@@ -8,6 +8,12 @@
     "create2": "作成する",
     "share1": "お題を",
     "share2": "共有する",
+    "complete": "完成",
+    "clear_message": "クリア時メッセージ(オプション)",
+    "share_url": "共有URL",
+    "copy_url": "URLをコピー",
+    "copied": "コピーしました",
+    "close": "閉じる",
     "newgame": "他のお題",
     "back_game1": "ゲーム",
     "back_game2": "に戻る"

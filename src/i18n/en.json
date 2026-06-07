@@ -8,6 +8,12 @@
     "create2": "PROBLEM",
     "share1": "SHARE",
     "share2": "PROBLEM",
+    "complete": "DONE",
+    "clear_message": "Clear Message (Optional)",
+    "share_url": "Share URL",
+    "copy_url": "Copy URL",
+    "copied": "Copied",
+    "close": "Close",
     "newgame": "NEW GAME",
     "back_game1": "BACK",
     "back_game2": "GAME"

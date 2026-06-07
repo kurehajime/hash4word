@@ -4,10 +4,10 @@ import { InputField } from "../models/InputField"
 import word_japanese2048 from '../assets/japanese2048.json'
 import word_english2048 from '../assets/english2048.json'
 import InputFieldElement from "./Create/InputFieldElement"
-import ShareTextElement from "./Create/ShareTextElement"
 import LogoElement from "./Share/LogoElement"
 import GameButtonElement from "./Create/GameButtonElement"
-import ShareButtonElement from "./Create/ShareButtonElement"
+import CompleteButtonElement from "./Create/CompleteButtonElement"
+import CreateCompleteDialog from "./Create/CreateCompleteDialog"
 
 type Props = {
     cellSize: number
@@ -16,6 +16,7 @@ type Props = {
 export default function CreateElement(props: Props) {
     const [inputField, setInputField] = useState<InputField | null>(null)
     const [message, setMessage] = useState<string>("")
+    const [completed, setCompleted] = useState<boolean>(false)
 
     useEffect(() => {
         const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
@@ -49,15 +50,16 @@ export default function CreateElement(props: Props) {
                         } /> : <></ >
             }
             {
-                inputField ? <ShareTextElement
-                    url={inputField.encode(message)}
+                inputField && completed ? <CreateCompleteDialog
+                    inputField={inputField}
                     message={message}
                     changeMessage={(message) => setMessage(message)}
-                ></ShareTextElement> : <></>
+                    close={() => setCompleted(false)}
+                ></CreateCompleteDialog> : <></>
             }
             <LogoElement create={true}></LogoElement>
             <GameButtonElement></GameButtonElement>
-            <ShareButtonElement inputField={inputField} message={message}></ShareButtonElement>
+            <CompleteButtonElement complete={() => setCompleted(true)}></CompleteButtonElement>
         </div >
     )
 }
