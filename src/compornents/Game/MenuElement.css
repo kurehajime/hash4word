@@ -37,11 +37,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4px;
     color: #ffffff;
     font-size: 14px;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
     font-weight: 900;
     pointer-events: none;
+}
+
+.modeOverlayText {
+    min-width: 0;
+}
+
+.modeOverlayArrow {
+    flex: 0 0 auto;
+    font-size: 12px;
+    line-height: 1;
 }
 
 

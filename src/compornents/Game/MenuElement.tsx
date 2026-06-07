@@ -32,7 +32,10 @@ export default function MenuElement(props: Props) {
                         ))}
                     </select>
                     <div className="modeOverlay">
-                        <RotatedButtonText lines={[selectedMode.label]} />
+                        <span className="modeOverlayText">
+                            <RotatedButtonText lines={[selectedMode.label]} />
+                        </span>
+                        <span className="modeOverlayArrow" aria-hidden="true">▼</span>
                     </div>
                 </div>
             </div>
