@@ -1,4 +1,5 @@
 import toast, { Toaster } from 'react-hot-toast';
+import copyIcon from '../../assets/copy.svg'
 import './ShareTextElement.css';
 type Props = {
     url: string
@@ -23,13 +24,15 @@ export default function ShareTextElement(props: Props) {
                 <input type="text" value={props.url} readOnly
                     onFocus={(e) => e.target.select()}
                 ></input>
-                <button onClick={() => {
+                <button className="shareTextCopyButton" onClick={() => {
                     navigator.clipboard.writeText(props.url);
                     toast('Copied to clipboard!', {
                         duration: 2000,
                         position: 'bottom-center',
                     });
-                }}>📋</button>
+                }}>
+                    <img className="shareTextCopyIcon" src={copyIcon} alt="" aria-hidden="true" />
+                </button>
                 <Toaster />
             </div>
         </>

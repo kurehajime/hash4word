@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { createPortal } from 'react-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import { InputField } from '../../models/InputField'
+import copyIcon from '../../assets/copy.svg'
 import RotatedButtonText from '../Share/RotatedButtonText'
 import './CreateCompleteDialog.css'
 
@@ -59,7 +60,7 @@ export default function CreateCompleteDialog(props: Props) {
                             })
                         }}
                     >
-                        📋
+                        <img className="createCompleteCopyIcon" src={copyIcon} alt="" aria-hidden="true" />
                     </button>
                 </div>
                 <button

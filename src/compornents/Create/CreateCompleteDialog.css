@@ -36,7 +36,7 @@
 .createCompleteUrlLabel {
     color: #000000;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 900;
     line-height: 1.2;
 }
@@ -89,6 +89,13 @@
     cursor: pointer;
 }
 
+.createCompleteCopyIcon {
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin: 0px auto;
+}
+
 .createCompleteShareButton {
     width: 100%;
     min-height: 96px;
@@ -105,7 +112,7 @@
 @media (max-width: 760px) {
     .createCompleteMessageLabel,
     .createCompleteUrlLabel {
-        font-size: 26px;
+        font-size: 20px;
     }
 
     .createCompleteShareButton {

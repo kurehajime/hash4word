@@ -51,3 +51,15 @@
 .shareText input {
     width: 100%;
 }
+
+.shareTextCopyButton {
+    background-color: #000000;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+
+.shareTextCopyIcon {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
