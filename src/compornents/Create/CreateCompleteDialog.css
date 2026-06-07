@@ -7,12 +7,41 @@
     justify-content: center;
     padding: 24px;
     background-color: #ff006a;
+    overflow: hidden;
+}
+
+.createCompleteKeywordMarquee {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.createCompleteKeywordMarqueeRow {
+    position: absolute;
+    left: 50%;
+    width: max(2400px, 260vw);
+    transform-origin: center;
+}
+
+.createCompleteKeywordMarqueeText {
+    display: inline-block;
+    padding: 2px 18px;
+    background-color: #ffffff;
+    color: #ff006a;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .createCompleteDialogClose {
     position: fixed;
     top: 16px;
     right: 16px;
+    z-index: 2;
     width: 48px;
     height: 48px;
     border: 2px solid #000000;
@@ -26,6 +55,8 @@
 }
 
 .createCompleteDialogContent {
+    position: relative;
+    z-index: 1;
     display: flex;
     width: min(520px, 100%);
     flex-direction: column;

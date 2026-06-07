@@ -2,6 +2,8 @@ import { expect, test } from 'vitest'
 import { Field } from '../src/models/Field'
 import word_japanese2048 from '../src/assets/japanese2048.json'
 import { Random } from '../src/models/Random'
+import { InputField } from '../src/models/InputField'
+import { Seed } from '../src/models/Seed'
 test('問題を生成', () => {
     const random = new Random(64)
     const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
@@ -138,4 +140,25 @@ test('答え合わせ(不正解)', () => {
     const invalidTop = seed ? `${seed.word_top}ん` : ''
     const result = seed ? Field["validWord"](seed, invalidTop, seed.word_right, seed.word_bottom, seed.word_left) : true
     expect(result).toEqual(false)
+})
+
+test('作問したキーワードを取得', () => {
+    const seed = new Seed(
+        'けわしい',
+        'しつもん',
+        'しつもん',
+        'けわしい',
+        'け',
+        'し',
+        'も',
+        'し'
+    )
+    const inputField = InputField.createInputFieldbySeed(seed)
+
+    expect(inputField.keywords()).toEqual([
+        'けわしい',
+        'しつもん',
+        'しつもん',
+        'けわしい',
+    ])
 })

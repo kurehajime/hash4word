@@ -88,6 +88,32 @@ export class InputField {
         navigator.share(shareData)
     }
 
+    public keywords(): string[] {
+        return [
+            this.readHorizontalWord(3),
+            this.readVerticalWord(5),
+            this.readHorizontalWord(5),
+            this.readVerticalWord(3),
+        ]
+    }
+
+    private readHorizontalWord(y: number): string {
+        return this.cells
+            .filter(cell => cell.y === y)
+            .sort((a, b) => a.x - b.x)
+            .map(cell => cell.enabled ? cell.Rune : " ")
+            .join('')
+            .trim()
+    }
+
+    private readVerticalWord(x: number): string {
+        return this.cells
+            .filter(cell => cell.x === x)
+            .sort((a, b) => a.y - b.y)
+            .map(cell => cell.enabled ? cell.Rune : " ")
+            .join('')
+            .trim()
+    }
 
     private seed(): Seed {
         const top = this.cells.filter(cell => cell.y === 3).sort((a, b) => { return a.x - b.x }).map(cell => cell.enabled ? cell.Rune : " ").join('');
