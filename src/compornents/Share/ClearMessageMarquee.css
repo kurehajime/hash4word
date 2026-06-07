@@ -1,0 +1,28 @@
+.clearMessageMarquee {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.clearMessageMarqueeRow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(2400px, 260vw);
+    transform: translate(-50%, -50%) rotate(-12deg);
+    transform-origin: center;
+}
+
+.clearMessageMarqueeText {
+    display: inline-block;
+    padding: 10px 36px;
+    background-color: #000000;
+    color: #ff006a;
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 1.1;
+    white-space: nowrap;
+}

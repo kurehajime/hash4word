@@ -13,6 +13,7 @@ import { Seed } from "../models/Seed";
 import { Message } from "../models/Message";
 import CreateButtonElement from "./Game/CreateButtonElement";
 import BackgroundMarquee from "./Share/BackgroundMarquee";
+import ClearMessageMarquee from "./Share/ClearMessageMarquee";
 
 type Props = {
     cellSize: number
@@ -24,6 +25,7 @@ export default function GameElement(props: Props) {
     const [mode, setMode] = React.useState<number>(props.initMode)
     const [init, setInit] = React.useState<boolean>(false)
     const [touched, setTouched] = React.useState<boolean>(false)
+    const [clearMessage, setClearMessage] = React.useState<string>("")
 
     useEffect(() => {
         reload()
@@ -43,12 +45,15 @@ export default function GameElement(props: Props) {
                     console.log("INVALID SEED:" + seedStr)
                 }
             }
+            const messageStr = searchParams.get('message')
+            const decodedMessage = messageStr ? Message.decode(messageStr) : ""
+            setClearMessage(decodedMessage)
             if (import.meta.env.DEV && searchParams.has('message')) {
-                const messageStr = searchParams.get('message')
-                console.log("MESSAGE:" + (messageStr ? Message.decode(messageStr) : ""))
+                console.log("MESSAGE:" + decodedMessage)
             }
             setInit(true)
         } else {
+            setClearMessage("")
             history.pushState("", document.title, window.location.pathname);
         }
         switch (mode) {
@@ -91,6 +96,7 @@ export default function GameElement(props: Props) {
     return (
         <div style={{ position: "relative" }}>
             {field?.valid() ? <BackgroundMarquee /> : <></>}
+            {field?.valid() && clearMessage !== "" ? <ClearMessageMarquee message={clearMessage} /> : <></>}
             <div style={{ position: "relative", zIndex: 1 }}>
                 {field ? <FieldElement
                     cellSize={props.cellSize}
