@@ -129,11 +129,13 @@ export class Field {
     public share() {
         if (this.seed) {
             const seedStr = this.seed.encode()
-            const url = location.href.split('#')[0] + '?code=' + seedStr
+            const url = new URL(location.href.split('#')[0])
+            url.searchParams.set('code', seedStr)
+            url.searchParams.delete('message')
             const shareData = {
                 title: 'HASH4WORD',
                 text: '\n#hash4word ',
-                url: url,
+                url: url.toString(),
             }
             navigator.share(shareData)
         }

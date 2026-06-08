@@ -14,6 +14,7 @@ import { Message } from "../models/Message";
 import CreateButtonElement from "./Game/CreateButtonElement";
 import BackgroundMarquee from "./Share/BackgroundMarquee";
 import ClearMessageMarquee from "./Share/ClearMessageMarquee";
+import { languageFromSearch } from "../i18n/language";
 
 type Props = {
     cellSize: number
@@ -54,7 +55,9 @@ export default function GameElement(props: Props) {
             setInit(true)
         } else {
             setClearMessage("")
-            history.pushState("", document.title, window.location.pathname);
+            const language = languageFromSearch(window.location.search)
+            const nextSearch = language ? `?lang=${language}` : ""
+            history.pushState("", document.title, `${window.location.pathname}${nextSearch}`);
         }
         switch (mode) {
             case 1:

@@ -7,10 +7,11 @@ type Props = {
 }
 
 export default function LogoElement(props: Props) {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const languageClass = i18n.language.toLowerCase().startsWith("en") ? "english" : "japanese"
 
     return (
-        <div className="logoBox">
+        <div className={`logoBox ${languageClass}`}>
             <div className="logo">
                 <a href="https://github.com/kurehajime">
                     <img className="titleImage" src={titleImage} alt="HASH4WORD" />

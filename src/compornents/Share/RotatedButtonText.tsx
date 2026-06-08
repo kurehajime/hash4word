@@ -9,9 +9,9 @@ type Props = {
 
 export default function RotatedButtonText(props: Props) {
     let charCount = 0
-    return <>
+    return <span className="rotatedButtonText">
         {props.lines.map((line, lineIndex) => (
-            <span key={lineIndex}>
+            <span className="rotatedButtonLine" key={lineIndex}>
                 {Array.from(line).map((char, charIndex) => {
                     const animationIndex = charCount++
                     const highlightStart = props.highlightText ? line.indexOf(props.highlightText) : -1
@@ -39,8 +39,7 @@ export default function RotatedButtonText(props: Props) {
                             </span>
                         </span>
                 })}
-                {lineIndex < props.lines.length - 1 ? <br /> : null}
             </span>
         ))}
-    </>
+    </span>
 }

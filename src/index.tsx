@@ -6,10 +6,11 @@ import { HashRouter, Route, Routes } from 'react-router-dom'
 import CreateElement from './compornents/CreateElement'
 
 import './i18n/configs'
+import { resolveLanguage } from './i18n/language'
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 )
-const init_mode = (navigator.language).toLowerCase().includes("ja") ? 1 : 2
+const init_mode = resolveLanguage(window.location, navigator.language) === "ja" ? 1 : 2
 
 function App() {
     React.useEffect(() => {
