@@ -133,7 +133,7 @@ export class Field {
             url.searchParams.set('code', seedStr)
             url.searchParams.delete('message')
             const shareData = {
-                title: 'HASH4WORD',
+                title: 'YONTANGO',
                 text: '\n#hash4word ',
                 url: url.toString(),
             }

@@ -1,20 +1,23 @@
 import './LogoElement.css';
 import { useTranslation } from 'react-i18next'
 import RotatedButtonText from './RotatedButtonText';
-import titleImage from '../../assets/title.png';
+import titleEnImage from '../../assets/title_en.png';
+import titleJaImage from '../../assets/title_ja.png';
 type Props = {
     create: boolean
 }
 
 export default function LogoElement(props: Props) {
     const { t, i18n } = useTranslation()
-    const languageClass = i18n.language.toLowerCase().startsWith("en") ? "english" : "japanese"
+    const isEnglish = i18n.language.toLowerCase().startsWith("en")
+    const languageClass = isEnglish ? "english" : "japanese"
+    const titleImage = isEnglish ? titleEnImage : titleJaImage
 
     return (
         <div className={`logoBox ${languageClass}`}>
             <div className="logo">
                 <a href="https://github.com/kurehajime">
-                    <img className="titleImage" src={titleImage} alt="HASH4WORD" />
+                    <img className="titleImage" src={titleImage} alt="YONTANGO" />
                 </a>
             </div>
             <p>

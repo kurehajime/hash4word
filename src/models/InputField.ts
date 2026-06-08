@@ -81,7 +81,7 @@ export class InputField {
     public share(message = "") {
         const url = this.encode(message)
         const shareData = {
-            title: 'HASH4WORD',
+            title: 'YONTANGO',
             text: '\n#hash4word ',
             url: url,
         }
