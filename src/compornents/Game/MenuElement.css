@@ -84,6 +84,10 @@
     cursor: pointer;
 }
 
+.reload_button_bottom {
+    top: 640px;
+}
+
 .share_button {
     position: absolute;
     top: 558px;

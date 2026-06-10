@@ -7,6 +7,7 @@ type Props = {
     changeMode: (mode: number) => void
     reload: () => void
     share: () => void
+    onlyReload?: boolean
 }
 export default function MenuElement(props: Props) {
     const { t } = useTranslation()
@@ -24,24 +25,24 @@ export default function MenuElement(props: Props) {
 
     return (
         <div>
-            <div className="dictionary">
-                <div className="modeBox">
-                    <select name="select" value={props.mode} onChange={onChange} className="mode">
-                        {modeOptions.map(option => (
-                            <option key={option.value} value={option.value}>{option.label}</option>
-                        ))}
-                    </select>
-                    <div className="modeOverlay">
-                        <span className="modeOverlayText">
-                            <RotatedButtonText lines={[selectedMode.label]} />
-                        </span>
-                        <span className="modeOverlayArrow" aria-hidden="true">▼</span>
+            {!props.onlyReload ? <div className="dictionary">
+                    <div className="modeBox">
+                        <select name="select" value={props.mode} onChange={onChange} className="mode">
+                            {modeOptions.map(option => (
+                                <option key={option.value} value={option.value}>{option.label}</option>
+                            ))}
+                        </select>
+                        <div className="modeOverlay">
+                            <span className="modeOverlayText">
+                                <RotatedButtonText lines={[selectedMode.label]} />
+                            </span>
+                            <span className="modeOverlayArrow" aria-hidden="true">▼</span>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div> : <></>}
             <div className="buttons">
-                <div className="share"><button className="share_button" onClick={() => { props.share() }}><RotatedButtonText lines={[t('share1'), t('share2')]} /></button></div>
-                <div className="reload"><button className="reload_button" onClick={() => { props.reload() }}><RotatedButtonText lines={[t('newgame')]} /></button></div>
+                {!props.onlyReload ? <div className="share"><button className="share_button" onClick={() => { props.share() }}><RotatedButtonText lines={[t('share1'), t('share2')]} /></button></div> : <></>}
+                <div className="reload"><button className={props.onlyReload ? "reload_button reload_button_bottom" : "reload_button"} onClick={() => { props.reload() }}><RotatedButtonText lines={[t('newgame')]} /></button></div>
             </div>
         </div>
     )

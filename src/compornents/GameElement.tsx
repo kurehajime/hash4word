@@ -27,6 +27,7 @@ export default function GameElement(props: Props) {
     const [init, setInit] = React.useState<boolean>(false)
     const [touched, setTouched] = React.useState<boolean>(false)
     const [clearMessage, setClearMessage] = React.useState<string>("")
+    const [hideGameControls, setHideGameControls] = React.useState<boolean>(false)
 
     useEffect(() => {
         reload()
@@ -39,6 +40,7 @@ export default function GameElement(props: Props) {
         let seed: Seed | null = null
         const searchParams = new URLSearchParams(window.location.search)
         if (!init && searchParams.has('code')) {
+            setHideGameControls(true)
             const seedStr = searchParams.get('code')
             if (seedStr) {
                 seed = Seed.decode(seedStr)
@@ -55,6 +57,7 @@ export default function GameElement(props: Props) {
             setInit(true)
         } else {
             setClearMessage("")
+            setHideGameControls(false)
             const language = languageFromSearch(window.location.search)
             const nextSearch = language ? `?lang=${language}` : ""
             history.pushState("", document.title, `${window.location.pathname}${nextSearch}`);
@@ -113,9 +116,10 @@ export default function GameElement(props: Props) {
                     changeMode={(mode: number) => setMode(mode)}
                     reload={() => reload()}
                     share={() => { share() }}
+                    onlyReload={hideGameControls}
                 />
                 <LogoElement create={false}></LogoElement>
-                <CreateButtonElement></CreateButtonElement>
+                {!hideGameControls ? <CreateButtonElement></CreateButtonElement> : <></>}
             </div>
         </div>
     )
