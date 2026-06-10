@@ -19,6 +19,18 @@ body {
     overflow-x: hidden;
 }
 
+@keyframes marqueeTapeEnter {
+    0% {
+        opacity: 0.75;
+        transform: scaleY(0.08);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
 .container {
     position: relative;
     display: flex;
@@ -52,5 +64,14 @@ body {
 @media (orientation: portrait) {
     body {
         padding-top: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .backgroundMarqueeText,
+    .clearMessageMarqueeText,
+    .createCompleteKeywordMarqueeText {
+        animation: none;
     }
 }
