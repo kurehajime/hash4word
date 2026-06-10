@@ -13,16 +13,19 @@
     transform-origin: center;
 }
 
+.backgroundMarqueeRow .rfm-marquee-container {
+    background-color: #ffffff;
+    transform-origin: center;
+    animation: marqueeTapeEnter 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .backgroundMarqueeText {
     display: inline-block;
     padding: 2px 18px;
-    background-color: #ffffff;
     color: #ff006a;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
     font-size: 48px;
     font-weight: 900;
     line-height: 1;
     white-space: nowrap;
-    transform-origin: center;
-    animation: marqueeTapeEnter 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
