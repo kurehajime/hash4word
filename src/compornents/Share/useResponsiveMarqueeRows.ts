@@ -90,11 +90,13 @@ export function useResponsiveMarqueeRows(configs: MarqueeRowConfig[]): Responsiv
 
         scheduleUpdate()
         window.addEventListener("resize", scheduleUpdate)
+        window.addEventListener("app-scale-change", scheduleUpdate)
         window.visualViewport?.addEventListener("resize", scheduleUpdate)
 
         return () => {
             window.cancelAnimationFrame(frame)
             window.removeEventListener("resize", scheduleUpdate)
+            window.removeEventListener("app-scale-change", scheduleUpdate)
             window.visualViewport?.removeEventListener("resize", scheduleUpdate)
         }
     }, [configs])
