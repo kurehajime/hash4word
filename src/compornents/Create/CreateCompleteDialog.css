@@ -33,10 +33,10 @@
 
 .createCompleteKeywordMarqueeText {
     display: inline-block;
-    padding: 2px 18px;
+    padding: calc(2px * var(--marquee-row-scale, 1)) calc(18px * var(--marquee-row-scale, 1));
     color: #ff006a;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-    font-size: 48px;
+    font-size: calc(48px * var(--marquee-row-scale, 1));
     font-weight: 900;
     line-height: 1;
     white-space: nowrap;

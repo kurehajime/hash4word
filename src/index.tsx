@@ -16,8 +16,14 @@ function App() {
     React.useEffect(() => {
         const updateScale = () => {
             const appWidth = 730
-            const pagePadding = 20
-            const scale = Math.min(1, (window.innerWidth - pagePadding) / appWidth)
+            const appHeight = 740
+            const bodyStyle = getComputedStyle(document.body)
+            const horizontalPadding = parseFloat(bodyStyle.paddingLeft) + parseFloat(bodyStyle.paddingRight)
+            const verticalPadding = parseFloat(bodyStyle.paddingTop) + parseFloat(bodyStyle.paddingBottom)
+            const widthScale = (window.innerWidth - horizontalPadding) / appWidth
+            const heightScale = (window.innerHeight - verticalPadding) / appHeight
+            const isDesktop = window.innerWidth > 760
+            const scale = isDesktop ? Math.min(widthScale, heightScale) : Math.min(1, widthScale)
             document.documentElement.style.setProperty('--app-scale', scale.toString())
         }
         updateScale()

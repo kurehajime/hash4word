@@ -1,14 +1,18 @@
 import Marquee from "react-fast-marquee"
 import { createPortal } from "react-dom"
+import type { CSSProperties } from "react"
+import { MarqueeRowConfig, useResponsiveMarqueeRows } from "./useResponsiveMarqueeRows"
 import "./BackgroundMarquee.css"
 
+const rowConfigs: MarqueeRowConfig[] = [
+    { topRatio: 0.17, angle: -12, portraitAngle: -10, speed: 82, direction: "left" },
+    { topRatio: 0.34, angle: 32, portraitAngle: 18, speed: 200, direction: "left" },
+    { topRatio: 0.53, angle: -16, portraitAngle: -12, speed: 30, direction: "right" },
+    { topRatio: 0.70, angle: 17, portraitAngle: 14, speed: 92, direction: "right" },
+]
+
 export default function BackgroundMarquee() {
-    const rows = [
-        { top: 150, angle: -12, speed: 82, direction: "left" as const },
-        { top: 270, angle: 32, speed: 200, direction: "left" as const },
-        { top: 420, angle: -16, speed: 30, direction: "right" as const },
-        { top: 560, angle: 17, speed: 92, direction: "right" as const },
-    ]
+    const rows = useResponsiveMarqueeRows(rowConfigs)
 
     return createPortal(<div className="backgroundMarquee">
         {rows.map((row, index) => (
@@ -17,8 +21,10 @@ export default function BackgroundMarquee() {
                 key={index}
                 style={{
                     top: `${row.top}px`,
+                    width: `${row.width}px`,
+                    "--marquee-row-scale": row.scale,
                     transform: `translateX(-50%) rotate(${row.angle}deg)`,
-                }}
+                } as CSSProperties}
             >
                 <Marquee
                     speed={row.speed}

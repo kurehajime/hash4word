@@ -23,10 +23,10 @@
 
 .clearMessageMarqueeText {
     display: inline-block;
-    padding: 10px 36px;
+    padding: calc(10px * var(--marquee-row-scale, 1)) calc(36px * var(--marquee-row-scale, 1));
     color: #ff006a;
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-    font-size: 76px;
+    font-size: calc(76px * var(--marquee-row-scale, 1));
     font-weight: 900;
     line-height: 1.1;
     white-space: nowrap;

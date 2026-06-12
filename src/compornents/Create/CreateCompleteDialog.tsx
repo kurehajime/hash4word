@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
+import type { CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import Marquee from 'react-fast-marquee'
 import { InputField } from '../../models/InputField'
 import copyIcon from '../../assets/copy.svg'
 import RotatedButtonText from '../Share/RotatedButtonText'
+import { MarqueeRowConfig, useResponsiveMarqueeRows } from '../Share/useResponsiveMarqueeRows'
 import './CreateCompleteDialog.css'
 
 type Props = {
@@ -14,16 +16,18 @@ type Props = {
     close: () => void
 }
 
+const marqueeRowConfigs: MarqueeRowConfig[] = [
+    { topRatio: 0.14, angle: -12, portraitAngle: -10, speed: 82, direction: "left" },
+    { topRatio: 0.32, angle: 28, portraitAngle: 18, speed: 190, direction: "left" },
+    { topRatio: 0.52, angle: -16, portraitAngle: -12, speed: 42, direction: "right" },
+    { topRatio: 0.72, angle: 17, portraitAngle: 14, speed: 96, direction: "right" },
+]
+
 export default function CreateCompleteDialog(props: Props) {
     const { t } = useTranslation()
     const url = props.inputField.encode(props.message)
     const keywords = props.inputField.keywords()
-    const marqueeRows = [
-        { top: 115, angle: -12, speed: 82, direction: "left" as const },
-        { top: 255, angle: 28, speed: 190, direction: "left" as const },
-        { top: 430, angle: -16, speed: 42, direction: "right" as const },
-        { top: 595, angle: 17, speed: 96, direction: "right" as const },
-    ]
+    const marqueeRows = useResponsiveMarqueeRows(marqueeRowConfigs)
 
     return createPortal(
         <div className="createCompleteDialog">
@@ -34,8 +38,10 @@ export default function CreateCompleteDialog(props: Props) {
                         key={index}
                         style={{
                             top: `${row.top}px`,
+                            width: `${row.width}px`,
+                            "--marquee-row-scale": row.scale,
                             transform: `translateX(-50%) rotate(${row.angle}deg)`,
-                        }}
+                        } as CSSProperties}
                     >
                         <Marquee
                             speed={row.speed}

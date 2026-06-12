@@ -1,14 +1,21 @@
 import React from "react"
+import type { CSSProperties } from "react"
 import Marquee from "react-fast-marquee"
 import { createPortal } from "react-dom"
+import { MarqueeRowConfig, useResponsiveMarqueeRows } from "./useResponsiveMarqueeRows"
 import "./ClearMessageMarquee.css"
 
 type Props = {
     message: string
 }
 
+const rowConfigs: MarqueeRowConfig[] = [
+    { topRatio: 0.5, angle: -12, portraitAngle: -10, speed: 85, direction: "left" },
+]
+
 export default function ClearMessageMarquee(props: Props) {
     const [fieldCenterY, setFieldCenterY] = React.useState<number | null>(null)
+    const row = useResponsiveMarqueeRows(rowConfigs)[0]
 
     React.useEffect(() => {
         let frame = 0
@@ -42,10 +49,18 @@ export default function ClearMessageMarquee(props: Props) {
     }, [])
 
     return createPortal(<div className="clearMessageMarquee">
-        <div className="clearMessageMarqueeRow" style={fieldCenterY === null ? undefined : { top: `${fieldCenterY}px` }}>
+        <div
+            className="clearMessageMarqueeRow"
+            style={{
+                top: `${fieldCenterY ?? row.top}px`,
+                width: `${row.width}px`,
+                "--marquee-row-scale": row.scale,
+                transform: `translate(-50%, -50%) rotate(${row.angle}deg)`,
+            } as CSSProperties}
+        >
             <Marquee
-                speed={85}
-                direction="left"
+                speed={row.speed}
+                direction={row.direction}
                 autoFill
                 pauseOnHover={false}
             >

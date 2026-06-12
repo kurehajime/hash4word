@@ -24,15 +24,28 @@ export default function FieldElement(props: Props) {
     const [mouseStartX, setMouseStartX] = React.useState<number>(0)
     const [mouseStartY, setMouseStartY] = React.useState<number>(0)
 
+    const pointerPosition = (event: PointerEvent): Point | null => {
+        const svg = ref.current
+        const rect = svg?.getBoundingClientRect()
+        if (!svg || !rect || rect.width === 0 || rect.height === 0) {
+            return null
+        }
+        const svgWidth = svg.width.baseVal.value
+        const svgHeight = svg.height.baseVal.value
+        return {
+            x: (event.clientX - rect.left) * (svgWidth / rect.width),
+            y: (event.clientY - rect.top) * (svgHeight / rect.height),
+        }
+    }
 
     const touchStart = (event: Event) => {
         const e = event as PointerEvent
-        const rect = ref.current?.getBoundingClientRect()
-        if (!rect) {
+        const point = pointerPosition(e)
+        if (!point) {
             return
         }
-        const x = (e.clientX - window.pageXOffset - rect.left)
-        const y = (e.clientY - window.pageYOffset - rect.top)
+        const x = point.x
+        const y = point.y
         const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
         if (!props.seleted) {
             setMouseX(x)
@@ -64,12 +77,12 @@ export default function FieldElement(props: Props) {
 
     const touchMove = (event: Event) => {
         const e = event as PointerEvent
-        const rect = ref.current?.getBoundingClientRect()
-        if (!rect) {
+        const point = pointerPosition(e)
+        if (!point) {
             return
         }
-        const x = (e.clientX - window.pageXOffset - rect.left)
-        const y = (e.clientY - window.pageYOffset - rect.top)
+        const x = point.x
+        const y = point.y
         setMouseX(x)
         setMouseY(y)
     }
