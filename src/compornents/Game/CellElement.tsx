@@ -33,36 +33,38 @@ export default function CellElement(props: Props) {
                 <rect x={x + 1} y={y + 1} width={(cellSize2) - 2} height={(cellSize2) - 2}
                     fill={backgroundColor}
                     className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")} />
-                <text x={textX} y={textY}
-                    className={textClassName}
-                    textAnchor="middle" dominantBaseline="central"
-                    transform={`rotate(${rotation} ${textX} ${textY})`}
-                    fill={foregroundColor}
-                    stroke={foregroundColor}
-                    filter={textFilter}
-                    fontSize={`${cellSize * (props.selected ? 0.85 : 0.8)}px`}
-                    fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
-                    fontWeight={900}
-                >{props.cell.Rune}</text>
+                <g transform={`translate(${textX} ${textY}) rotate(${rotation})`}>
+                    <text x={0} y={0}
+                        className={textClassName}
+                        textAnchor="middle" dominantBaseline="central"
+                        fill={foregroundColor}
+                        stroke={foregroundColor}
+                        filter={textFilter}
+                        fontSize={`${cellSize * (props.selected ? 0.85 : 0.8)}px`}
+                        fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
+                        fontWeight={900}
+                    >{props.cell.Rune}</text>
+                </g>
 
                 <line x1={x + (cellSize2) - 0} y1={y + 0} x2={x + (cellSize2) - 0} y2={y + (cellSize2)} stroke="#000000" strokeWidth="3" />
                 <line x1={x + (cellSize2) - 0} y1={y + (cellSize2) - 0} x2={x + 0} y2={y + (cellSize2) - 0} stroke="#000000" strokeWidth="3" />
             </g>
             {
                 (props.selected && props.touched) ? <g>
-                    <text x={x + cellSize / 2 - cellSize} y={y + cellSize / 2 - cellSize}
-                        className={textClassName}
-                        textAnchor="middle" dominantBaseline="central"
-                        transform={`rotate(${rotation} ${x + cellSize / 2 - cellSize} ${y + cellSize / 2 - cellSize})`}
-                        fill={"#000000"}
-                        stroke={"#ffffff"}
-                        strokeWidth={3}
-                        filter={textFilter}
-                        fontSize={"100px"}
-                        fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
-                        fontWeight={900}
-                        opacity={0.5}
-                    >{props.cell.Rune}</text>
+                    <g transform={`translate(${x + cellSize / 2 - cellSize} ${y + cellSize / 2 - cellSize}) rotate(${rotation})`}>
+                        <text x={0} y={0}
+                            className={textClassName}
+                            textAnchor="middle" dominantBaseline="central"
+                            fill={"#000000"}
+                            stroke={"#ffffff"}
+                            strokeWidth={3}
+                            filter={textFilter}
+                            fontSize={"100px"}
+                            fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
+                            fontWeight={900}
+                            opacity={0.5}
+                        >{props.cell.Rune}</text>
+                    </g>
                 </g> : <></>
             }
         </g > : <g></g>)
