@@ -36,6 +36,7 @@ export default function CellElement(props: Props) {
                     transform={`rotate(${rotation} ${textX} ${textY})`}
                     fill={foregroundColor}
                     stroke={foregroundColor}
+                    filter="url(#grunge-text)"
                     fontSize={`${cellSize * (props.selected ? 0.85 : 0.8)}px`}
                     fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
                     fontWeight={900}
@@ -53,6 +54,7 @@ export default function CellElement(props: Props) {
                         fill={"#000000"}
                         stroke={"#ffffff"}
                         strokeWidth={3}
+                        filter="url(#grunge-text)"
                         fontSize={"100px"}
                         fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
                         fontWeight={900}

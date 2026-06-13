@@ -112,6 +112,22 @@ export default function FieldElement(props: Props) {
                 <rect width="4" height="4" fill="#000000" />
                 <line x1="0" y1="0" x2="0" y2="4" stroke="#ff006a" strokeWidth="0.75" />
             </pattern>
+            <filter id="grunge-text" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.14" numOctaves="3" seed="8" result="noise" />
+                <feColorMatrix
+                    in="noise"
+                    type="matrix"
+                    values="0 0 0 0 0
+                            0 0 0 0 0
+                            0 0 0 0 0
+                            1 0 0 0 0"
+                    result="noiseAlpha"
+                />
+                <feComponentTransfer in="noiseAlpha" result="grungeAlpha">
+                    <feFuncA type="discrete" tableValues="0 0 1 1 1 1 1 1" />
+                </feComponentTransfer>
+                <feComposite in="SourceGraphic" in2="grungeAlpha" operator="in" />
+            </filter>
         </defs>
         <ScoreElement
             field={props.field}
