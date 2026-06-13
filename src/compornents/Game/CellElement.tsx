@@ -1,4 +1,5 @@
 import { Cell } from "../../models/Cell"
+import { grungeTextFilterUrl } from "../../utils/grungeFilter"
 import { runeRotation } from "../../utils/runeRotation"
 import "./CellElement.css"
 type Props = {
@@ -22,6 +23,8 @@ export default function CellElement(props: Props) {
     const textX = x + cellSize / 2
     const textY = y + cellSize / 2
     const rotation = runeRotation(props.cell.Rune)
+    const textClassName = (props.selected ? "selectedText" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")
+    const textFilter = grungeTextFilterUrl(props.cell.Rune)
     return (
         props.cell.enabled ? <g>
             <rect x={props.x} y={props.y} width={cellSize} height={cellSize}
@@ -31,12 +34,12 @@ export default function CellElement(props: Props) {
                     fill={backgroundColor}
                     className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")} />
                 <text x={textX} y={textY}
-                    className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")}
+                    className={textClassName}
                     textAnchor="middle" dominantBaseline="central"
                     transform={`rotate(${rotation} ${textX} ${textY})`}
                     fill={foregroundColor}
                     stroke={foregroundColor}
-                    filter="url(#grunge-text)"
+                    filter={textFilter}
                     fontSize={`${cellSize * (props.selected ? 0.85 : 0.8)}px`}
                     fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
                     fontWeight={900}
@@ -48,13 +51,13 @@ export default function CellElement(props: Props) {
             {
                 (props.selected && props.touched) ? <g>
                     <text x={x + cellSize / 2 - cellSize} y={y + cellSize / 2 - cellSize}
-                        className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")}
+                        className={textClassName}
                         textAnchor="middle" dominantBaseline="central"
                         transform={`rotate(${rotation} ${x + cellSize / 2 - cellSize} ${y + cellSize / 2 - cellSize})`}
                         fill={"#000000"}
                         stroke={"#ffffff"}
                         strokeWidth={3}
-                        filter="url(#grunge-text)"
+                        filter={textFilter}
                         fontSize={"100px"}
                         fontFamily="Noto Sans JP, Helvetica Neue, Arial, sans-serif"
                         fontWeight={900}
