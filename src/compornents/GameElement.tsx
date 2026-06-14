@@ -28,12 +28,27 @@ export default function GameElement(props: Props) {
     const [touched, setTouched] = React.useState<boolean>(false)
     const [clearMessage, setClearMessage] = React.useState<string>("")
     const [hideGameControls, setHideGameControls] = React.useState<boolean>(false)
+    const [showPanelHint, setShowPanelHint] = React.useState<boolean>(false)
+    const [panelInteracted, setPanelInteracted] = React.useState<boolean>(false)
 
     useEffect(() => {
         reload()
     }, [mode])
 
+    useEffect(() => {
+        setShowPanelHint(false)
+        if (!field || panelInteracted) {
+            return
+        }
+        const timerId = window.setTimeout(() => {
+            setShowPanelHint(true)
+        }, 3000)
+        return () => window.clearTimeout(timerId)
+    }, [field, panelInteracted])
+
     const reload = () => {
+        setShowPanelHint(false)
+        setPanelInteracted(false)
         const runes_hiragana = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎくげこざじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっぁぃぅぇぉ'.split('')
         const runes_english = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
         const runes_pokemon_ja = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギクゲコザジズゼゾダヂヅデドバビブベボパピプペポッァィゥェォー'.split('')
@@ -83,6 +98,8 @@ export default function GameElement(props: Props) {
             if (!field.getCell(point).enabled || field.getCell(point).fixed) {
                 return
             }
+            setPanelInteracted(true)
+            setShowPanelHint(false)
             if (seleted) {
                 setField(field.swap(seleted, point))
                 setSelected(null)
@@ -110,6 +127,7 @@ export default function GameElement(props: Props) {
                     clicked={clicked}
                     seleted={seleted}
                     touched={touched}
+                    showPanelHint={showPanelHint}
                 /> : <></>}
                 <MenuElement
                     mode={mode}

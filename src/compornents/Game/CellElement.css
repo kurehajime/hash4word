@@ -16,3 +16,19 @@
 .fixed {
     cursor: default;
 }
+
+.tapHintPanel {
+    animation: tapHintFloat 1.1s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@keyframes tapHintFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(2deg);
+    }
+}

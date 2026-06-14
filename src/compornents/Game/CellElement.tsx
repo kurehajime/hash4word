@@ -11,6 +11,7 @@ type Props = {
     cellSize: number
     selected: boolean
     touched: boolean
+    showTapHint: boolean
 }
 export default function CellElement(props: Props) {
     const cellSize = props.cellSize
@@ -29,7 +30,7 @@ export default function CellElement(props: Props) {
         props.cell.enabled ? <g>
             <rect x={props.x} y={props.y} width={cellSize} height={cellSize}
                 fill={props.selected ? "url(#panel-back-screentone)" : "#000000"} className="" />
-            <g>
+            <g className={props.showTapHint ? "tapHintPanel" : ""}>
                 <rect x={x + 1} y={y + 1} width={(cellSize2) - 2} height={(cellSize2) - 2}
                     fill={backgroundColor}
                     className={(props.selected ? "selected" : "easeIn") + " " + (props.cell.fixed ? "fixed" : "")} />

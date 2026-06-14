@@ -13,6 +13,7 @@ type Props = {
     clicked: (point: Point, touched: boolean) => void
     seleted: Point | null
     touched: boolean
+    showPanelHint: boolean
 }
 export default function FieldElement(props: Props) {
     const ref = useRef<SVGSVGElement>(null);
@@ -166,6 +167,7 @@ export default function FieldElement(props: Props) {
                 cellSize={cellSize}
                 selected={selected}
                 touched={props.touched}
+                showTapHint={props.showPanelHint && cell.x === 4 && cell.y === 3}
             />
         })
         }
@@ -184,6 +186,7 @@ export default function FieldElement(props: Props) {
                 cellSize={cellSize}
                 selected={selected}
                 touched={props.touched}
+                showTapHint={false}
             />
         })
         }
