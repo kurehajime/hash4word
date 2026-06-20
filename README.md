@@ -1,6 +1,8 @@
 # hash4word - Crossword Puzzle
 https://yontango.asweb.app/
 [
-![](https://user-images.githubusercontent.com/4569916/187026526-04e2f34d-aaeb-4654-a427-b38c29d8d8d4.gif)
+![](https://github.com/user-attachments/assets/74295bfa-1c67-4e05-ab5c-e529bb62fdd6)
 ](https://kurehajime.github.io/hash4word/
 )
+
+
