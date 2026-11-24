@@ -6,7 +6,7 @@
     "@types/node": "^25.7.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "i18next": "^26.1.0",
+    "i18next": "^26.7.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-fast-marquee": "^1.6.5",
